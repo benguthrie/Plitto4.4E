@@ -4,17 +4,28 @@ package com.example.android.navigationdrawerexample;
 import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.util.JsonReader;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -126,11 +137,58 @@ public class PlittoFragment extends Fragment {
 
         }
 
+        private ListView userListView;
+        private ArrayAdapter<String> listAdapter;
+
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
-            Log.v(TAG, result);
-            Toast.makeText(getActivity(), "Data Sent!", Toast.LENGTH_LONG).show();
+            Log.v(TAG, "RESULT: " + result);
+//             Toast.makeText(getActivity(), "Data Sent!", Toast.LENGTH_LONG).show();
+            // TODO Take the data results and put them in the list where they can be shown.
+
+            // 1. Concert it into an object?
+            JSONObject obj = null;
+            try {
+                obj = new JSONObject(result);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+            JSONArray getSomeResults = null;
+            if (obj != null) try {
+                getSomeResults = obj.getJSONArray("results");
+                // BG Create the list
+                List<String> list = new ArrayList<String>();
+
+
+                // BG At this point, we have the items from the results in an object / array, and we need to build up the list.
+                for (int i = 0; i < getSomeResults.length(); i++) {
+                    list.add(getSomeResults.getJSONObject(i).getString("username"));
+                }
+                // BG We can prove that we can get the user information from the call.
+                Log.v(TAG, "First User: " + getSomeResults.getJSONObject(0).getString("username"));
+                Log.v(TAG, "what is the list?: " + list);
+                Log.v(TAG, "raw results: " + getSomeResults); // This is the exact JSON object.
+                Toast.makeText(getActivity(), getSomeResults.getJSONObject(0).getString("username"), Toast.LENGTH_LONG).show();
+                // TODO Update the list view with these results
+                // Following http://developer.android.com/guide/topics/ui/layout/listview.html
+
+                // Following http://windrealm.org/tutorials/android/android-listview.php
+                // TODO FAILS HERE - "cannot find symbol method findViewById(int)"
+
+                // 
+                Log.v(TAG, "Find by ID" + getActivity().findViewById(R.id.userlist));
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            Log.v(TAG, "Record: " + obj.length());
+
+
         }
     }
 
