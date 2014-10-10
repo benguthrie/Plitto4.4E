@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res" >
+            <file
+                name="earth"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\earth.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="jupiter"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\jupiter.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mars"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\mars.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mercury"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\mercury.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="neptune"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\neptune.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="saturn"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\saturn.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="uranus"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\uranus.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="venus"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\venus.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="action_search"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-hdpi\action_search.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="drawer_shadow"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-hdpi\drawer_shadow.9.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_drawer"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-hdpi\ic_drawer.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-hdpi\ic_launcher.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="action_search"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-mdpi\action_search.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="drawer_shadow"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-mdpi\drawer_shadow.9.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_drawer"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-mdpi\ic_drawer.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-mdpi\ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="action_search"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-xhdpi\action_search.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="drawer_shadow"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-xhdpi\drawer_shadow.9.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_drawer"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-xhdpi\ic_drawer.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-xhdpi\ic_launcher.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-xxhdpi\ic_launcher.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="activity_main"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\activity_main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="drawer_list_item"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\drawer_list_item.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_planet"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\fragment_planet.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="main"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\menu\main.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\values\strings.xml"
+                qualifiers="" >
+                <string name="app_name" >Plitto
+                </string>
+                <string name="action_websearch" >Web search
+                </string>
+                <string name="drawer_open" >Open navigation drawer
+                </string>
+
+                <string-array name="nav_array" >
+                    <item>
+Ditto
+                    </item>
+                    <item>
+Search
+                    </item>
+                    <item>
+Friends
+                    </item>
+                    <item>
+Lists
+                    </item>
+                    <item>
+Me
+                    </item>
+                    <item>
+Settings
+                    </item>
+                    <item>
+Logout
+                    </item>
+                    <item>
+Everything
+                    </item>
+                </string-array>
+
+                <string name="drawer_close" >Close navigation drawer
+                </string>
+
+                <string-array name="planets_array" >
+                    <item>
+Mercury
+                    </item>
+                    <item>
+Venus
+                    </item>
+                    <item>
+Earth
+                    </item>
+                    <item>
+Mars
+                    </item>
+                    <item>
+Jupiter
+                    </item>
+                    <item>
+Saturn
+                    </item>
+                    <item>
+Uranus
+                    </item>
+                    <item>
+Neptune
+                    </item>
+                </string-array>
+
+                <string name="app_not_available" >Sorry, there\'s no web browser available
+                </string>
+            </file>
+            <file
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\values-sw600dp\refs.xml"
+                qualifiers="sw600dp-v13" >
+                <item
+                    name="fragment_ditto_some"
+                    type="layout">
+@layout/fragment_item_grid
+                </item>
+            </file>
+            <file
+                name="fragment_item_grid"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\fragment_item_grid.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_item_list"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\fragment_item_list.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\values-large\refs.xml"
+                qualifiers="large-v4" >
+                <item
+                    name="fragment_ditto_some"
+                    type="layout">
+@layout/fragment_item_grid
+                </item>
+            </file>
+            <file
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\values\refs.xml"
+                qualifiers="" >
+                <item
+                    name="fragment_ditto_some"
+                    type="layout">
+@layout/fragment_item_list
+                </item>
+            </file>
+        </source>
+        <source path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\generated\res\rs\debug" />
+        <source path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\generated\res\generated\debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\debug\res" />
+    </dataSet>
+
+</merger>
