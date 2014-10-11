@@ -1695,7 +1695,11 @@
       <created>1413055812936</created>
       <updated>1413055812936</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Ronak's code that builds the &quot;Ditto&quot; view is merged.&#10;&#10;Application renamed from the navigationdrawersample to com.plitto.android.example.">
+      <created>1413055838238</created>
+      <updated>1413055838238</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
