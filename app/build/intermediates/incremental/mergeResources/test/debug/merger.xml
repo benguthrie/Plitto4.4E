@@ -2,9 +2,9 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\androidTest\res" />
-        <source path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\generated\res\rs\test\debug" />
-        <source path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\generated\res\generated\test\debug" />
+        <source path="/home/batman/projects/android/Plitto4.4E/app/src/androidTest/res" />
+        <source path="/home/batman/projects/android/Plitto4.4E/app/build/generated/res/rs/test/debug" />
+        <source path="/home/batman/projects/android/Plitto4.4E/app/build/generated/res/generated/test/debug" />
     </dataSet>
 
 </merger>

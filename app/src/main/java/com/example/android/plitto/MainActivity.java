@@ -152,6 +152,11 @@ public class MainActivity extends Activity {
                     Toast.makeText(this, R.string.app_not_available, Toast.LENGTH_LONG).show();
                 }
                 return true;
+            case R.id.action_refresh:
+                Fragment fragment2 = PlittoFragment.newInstance(0);
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment2).commit();
+
             default:
                 return super.onOptionsItemSelected(item);
         }
