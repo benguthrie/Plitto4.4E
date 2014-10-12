@@ -2,22 +2,16 @@
 <pre-dex-items>
 
     <item
-        dex="/home/batman/projects/android/Plitto4.4E/app/build/intermediates/pre-dexed/debug/okio-1.0.0-f2b4c7933789591f50bbc6b4fc653e49e96c8847.jar"
-        jar="/home/batman/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.0.0/2534c458682c73f5b9871131ab3098d3f987ca3/okio-1.0.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="02534c458682c73f5b9871131ab3098d3f987ca3"/>
+        dex="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-63587936ae897837d88087c00b80eb3ceff75c4c.jar"
+        jar="C:\Users\Ben\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
+        jumboMode="false" revision="20.0.0" sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67" />
     <item
-        dex="/home/batman/projects/android/Plitto4.4E/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0-bfe6379f31d17615f5ca4b83bd0a7235fba0720f.jar"
-        jar="/usr/share/android-studio/data/sdk/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+        dex="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\intermediates\pre-dexed\debug\okio-1.0.0-df48fca5961f327ed9d7846c293024e861a332ec.jar"
+        jar="C:\Users\Ben\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.0.0\2534c458682c73f5b9871131ab3098d3f987ca3\okio-1.0.0.jar"
+        jumboMode="false" revision="20.0.0" sha1="02534c458682c73f5b9871131ab3098d3f987ca3" />
     <item
-        dex="/home/batman/projects/android/Plitto4.4E/app/build/intermediates/pre-dexed/debug/okhttp-2.0.0-5976d6a06a8e8655fdbe10d43af6b829dea7e8c0.jar"
-        jar="/home/batman/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.0.0/4c8d1536dba3812cc1592090dc20c47a4ed3c35e/okhttp-2.0.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="4c8d1536dba3812cc1592090dc20c47a4ed3c35e"/>
+        dex="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\intermediates\pre-dexed\debug\okhttp-2.0.0-9f1f98f7248dc41b2a213b373968bfc76c03001d.jar"
+        jar="C:\Users\Ben\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.0.0\4c8d1536dba3812cc1592090dc20c47a4ed3c35e\okhttp-2.0.0.jar"
+        jumboMode="false" revision="20.0.0" sha1="4c8d1536dba3812cc1592090dc20c47a4ed3c35e" />
 
 </pre-dex-items>

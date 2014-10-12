@@ -54,7 +54,7 @@ public class PlittoFragment extends Fragment {
                              Bundle savedInstanceState) {
         Log.d(TAG, "On create view");
         View rootView = inflater.inflate(R.layout.fragment_item_list, container, false);
-        text = (TextView) rootView.findViewById(R.id.itemListTitle);
+        // BG Removed - text = (TextView) rootView.findViewById(R.id.itemListTitle);
         listview = (ListView) rootView.findViewById(R.id.userlist);
         header = new ArrayList<String>();
         content = new ArrayList<RowInfo>();

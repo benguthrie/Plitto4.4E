@@ -143,14 +143,14 @@ public final class R {
         public static final int content_frame=0x7f080001;
         public static final int date=0x7f080009;
         public static final int drawer_layout=0x7f080000;
-        public static final int gridTitle=0x7f080003;
+        public static final int gridTitle=0x7f080004;
         public static final int image=0x7f080006;
-        public static final int img=0x7f080007;
-        public static final int itemListTitle=0x7f080004;
+        public static final int img=0x7f080008;
         public static final int left_drawer=0x7f080002;
         public static final int rowTextView=0x7f08000a;
-        public static final int txt=0x7f080008;
+        public static final int txt=0x7f080007;
         public static final int userlist=0x7f080005;
+        public static final int username=0x7f080003;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -159,9 +159,9 @@ public final class R {
         public static final int fragment_item_grid=0x7f030002;
         public static final int fragment_item_list=0x7f030003;
         public static final int fragment_planet=0x7f030004;
-        public static final int header=0x7f030005;
-        public static final int main_content=0x7f030006;
-        public static final int subheader=0x7f030007;
+        public static final int main_content=0x7f030005;
+        public static final int row_list=0x7f030006;
+        public static final int row_user=0x7f030007;
         public static final int userrow=0x7f030008;
     }
     public static final class menu {
@@ -177,8 +177,13 @@ public final class R {
         public static final int hello_blank_fragment=0x7f050006;
     }
     public static final class style {
-        public static final int ListItem=0x7f060000;
-        public static final int ListRow=0x7f060001;
-        public static final int UserRow=0x7f060002;
+        public static final int GREEN=0x7f060000;
+        public static final int ListItem=0x7f060001;
+        public static final int ListRow=0x7f060002;
+        public static final int UserRow=0x7f060003;
+        public static final int textDetail=0x7f060004;
+        public static final int textOnDark=0x7f060005;
+        public static final int textOnWhite=0x7f060006;
+        public static final int userimage=0x7f060007;
     }
 }

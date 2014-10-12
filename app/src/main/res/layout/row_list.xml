@@ -3,20 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:weightSum="100">
+    android:weightSum="100"
+    style="@style/ListRow">
 
     <ImageView
-        android:layout_width="15dp"
-        android:layout_height="50dp"
-        android:layout_weight="20"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:id="@+id/img"
-        style="userRow" />
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="80"
         android:id="@+id/txt"
-        style="@style/UserRow" />
+        style="@style/textOnDark" />
 
 </LinearLayout>
+

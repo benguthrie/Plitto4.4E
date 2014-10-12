@@ -61,9 +61,9 @@ public class SimpleAdapter extends ArrayAdapter<RowInfo> {
             // Inflate the layout according to the view type
             LayoutInflater inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             if (type == 0) {
-                v = inflater.inflate(R.layout.header, parent, false);
+                v = inflater.inflate(R.layout.row_user, parent, false);
             } else if (type == 1) {
-                v = inflater.inflate(R.layout.subheader, parent, false);
+                v = inflater.inflate(R.layout.row_list, parent, false);
             } else {
                 v = inflater.inflate(R.layout.main_content, parent, false);
             }
