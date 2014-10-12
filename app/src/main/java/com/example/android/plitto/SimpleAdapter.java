@@ -68,6 +68,7 @@ public class SimpleAdapter extends ArrayAdapter<RowInfo> {
                 v = inflater.inflate(R.layout.main_content, parent, false);
             }
         }
+        v.setTag(""+type);
         RowInfo c = itemList.get(position);
         TextView txt = (TextView) v.findViewById(R.id.txt);
         ImageView img = (ImageView) v.findViewById(R.id.img);

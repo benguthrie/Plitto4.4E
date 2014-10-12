@@ -7,10 +7,12 @@ import java.util.List;
 import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +32,6 @@ public class PlittoFragment extends Fragment {
     private String url = "http://www.plitto.com/api/getSometest";
     TextView text;
     ListView listview;
-    List<String> header;
     List<RowInfo> content;
     HashMap<Integer, Integer> map;
 
@@ -41,7 +42,6 @@ public class PlittoFragment extends Fragment {
     public static PlittoFragment newInstance(int position) {
         Log.d(TAG, "On new instance");
         PlittoFragment fragment = new PlittoFragment();
-
         Bundle args = new Bundle();
         args.putInt(ARG_NAV_NUMBER, position);
         fragment.setArguments(args);
@@ -56,10 +56,33 @@ public class PlittoFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_item_list, container, false);
         // BG Removed - text = (TextView) rootView.findViewById(R.id.itemListTitle);
         listview = (ListView) rootView.findViewById(R.id.userlist);
-        header = new ArrayList<String>();
-        content = new ArrayList<RowInfo>();
-        map = new HashMap<Integer, Integer>();
 
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                String myId = (String)view.getTag();
+                //Toast.makeText(getActivity(),myId,Toast.LENGTH_LONG).show();
+                if(Integer.parseInt(myId) == 0)
+                {
+                    String name = content.get(i).getName();
+                    UserFragment fragment = UserFragment.newInstance(name);
+                    android.app.FragmentManager fragmentManager = getFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+
+                }
+
+                else if(Integer.parseInt(myId) == 1)
+                {
+                    String name = content.get(i).getName();
+                    ListFragment fragment = ListFragment.newInstance(name);
+                    android.app.FragmentManager fragmentManager = getFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+
+                }
+            }
+        });
+
+        content = new ArrayList<RowInfo>();
         return rootView;
     }
 
@@ -134,16 +157,13 @@ public class PlittoFragment extends Fragment {
                     JSONObject user = (JSONObject) userArray.get(i);
                     String username = user.getString("username");
                     content.add(new RowInfo(1, username));
-                    header.add(username);
                     JSONArray user_lists = (JSONArray) user.getJSONArray("lists");
                     for (int j = 0; j < user_lists.length(); j++) {
                         JSONObject user_desc = (JSONObject) user_lists.get(j);
                         content.add(new RowInfo(2, user_desc.getString("listname")));
-                        header.add(user_desc.getString("listname"));
                         JSONArray final_list = (JSONArray) user_desc.getJSONArray("items");
                         for (int k = 0; k < final_list.length(); k++) {
                             JSONObject final_elem = (JSONObject) final_list.get(k);
-                            header.add(final_elem.getString("thingname"));
                             content.add(new RowInfo(3, final_elem.getString("thingname"), final_elem.getString("added")));
                         }
                     }
