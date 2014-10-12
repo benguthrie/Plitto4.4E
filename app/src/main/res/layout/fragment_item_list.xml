@@ -9,14 +9,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Item List Fragment"
+        android:text=""
         android:id="@+id/itemListTitle"
         android:layout_gravity="left|top" />
 
     <ListView
         android:id="@+id/userlist"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        style="@style/ListItem"/>
 
 
 </FrameLayout>
