@@ -7,15 +7,15 @@
 
     <ImageView
         android:layout_width="15dp"
-        android:layout_height="30dp"
-        android:layout_weight="5"
+        android:layout_height="50dp"
+        android:layout_weight="20"
         android:id="@+id/img"
         style="userRow" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="70"
+        android:layout_weight="80"
         android:id="@+id/txt"
         style="@style/UserRow" />
 

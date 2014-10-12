@@ -8,16 +8,15 @@
 
     <ImageView
         android:layout_width="20dp"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:layout_weight="20"
         android:id="@+id/img" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="70"
+        android:layout_weight="80"
         android:id="@+id/txt" />
 
 </LinearLayout>
 
-<!-- From: file:/C:/Users/Ben/AndroidStudioProjects/Plitto4.4E/app/src/main/res/layout/subheader.xml -->
+<!-- From: file:/home/batman/projects/android/Plitto4.4E/app/src/main/res/layout/subheader.xml -->

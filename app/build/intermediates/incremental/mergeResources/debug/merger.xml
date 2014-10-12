@@ -2,209 +2,699 @@
 <merger version="2" >
 
     <dataSet config="main" >
-        <source path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res" >
+        <source path="/home/batman/projects/android/Plitto4.4E/app/src/main/res" >
             <file
-                name="check_active"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\check_active.png"
+                name="i142winebottle"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i142winebottle.png"
                 qualifiers=""
                 type="drawable" />
             <file
-                name="check_all"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\check_all.png"
+                name="i14tag"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i14tag.png"
                 qualifiers=""
                 type="drawable" />
             <file
-                name="check_latency"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\check_latency.png"
+                name="i108badge"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i108badge.png"
                 qualifiers=""
                 type="drawable" />
             <file
-                name="check_pending"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\check_pending.png"
+                name="i295shield"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i295shield.png"
                 qualifiers=""
                 type="drawable" />
             <file
-                name="chevron_down"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\chevron_down.png"
+                name="icheckpending"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/icheckpending.png"
                 qualifiers=""
                 type="drawable" />
             <file
-                name="dice"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\dice.png"
+                name="i33cabinet"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i33cabinet.png"
                 qualifiers=""
                 type="drawable" />
             <file
-                name="earth"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\earth.jpg"
+                name="i20gear2"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i20gear2.png"
                 qualifiers=""
                 type="drawable" />
             <file
-                name="jupiter"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\jupiter.jpg"
+                name="ilist"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/ilist.png"
                 qualifiers=""
                 type="drawable" />
             <file
-                name="list"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\list.png"
+                name="i104indexcards"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i104indexcards.png"
                 qualifiers=""
                 type="drawable" />
             <file
-                name="mars"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\mars.jpg"
+                name="ichevrondown"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/ichevrondown.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i55network"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i55network.png"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="mercury"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\mercury.jpg"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/mercury.jpg"
                 qualifiers=""
                 type="drawable" />
             <file
-                name="neptune"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\neptune.jpg"
+                name="imenualt82"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/imenualt82.png"
                 qualifiers=""
                 type="drawable" />
             <file
-                name="saturn"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\saturn.jpg"
+                name="i117todo"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i117todo.png"
                 qualifiers=""
                 type="drawable" />
             <file
-                name="tiles"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\tiles.png"
+                name="i187pencil"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i187pencil.png"
                 qualifiers=""
                 type="drawable" />
             <file
-                name="uranus"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\uranus.jpg"
+                name="i143liquorbottle"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i143liquorbottle.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i184warning"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i184warning.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i78stopwatch"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i78stopwatch.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i11clock"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i11clock.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i130dice"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i130dice.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i84lightbulb"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i84lightbulb.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i193locationarrow"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i193locationarrow.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i60signpost"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i60signpost.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i191collection"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i191collection.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i05shuffle"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i05shuffle.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="listexpanded"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/listexpanded.png"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="venn"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\venn.png"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/venn.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i123idcard"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i123idcard.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="saturn"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/saturn.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i03loopback"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i03loopback.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="dice"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/dice.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i85trophy"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i85trophy.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i101gameplan"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i101gameplan.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i29heart"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i29heart.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="checklatency"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/checklatency.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i95equalizer"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i95equalizer.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i91beaker2"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i91beaker2.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i02redo"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i02redo.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="iquotefaces"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/iquotefaces.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="itileslittle50"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/itileslittle50.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i40inbox"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i40inbox.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="jupiter"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/jupiter.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i07mapmarker"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i07mapmarker.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i19gear"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i19gear.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="imenualt512"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/imenualt512.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="icheckactive"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/icheckactive.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i06magnify"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i06magnify.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="chevron_down"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/chevron_down.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="listicon"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/listicon.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="check_pending"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/check_pending.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i16linechart"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i16linechart.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i18envelope"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i18envelope.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i122stats"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i122stats.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="menualt512"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/menualt512.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="chevrondown"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/chevrondown.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i77ekg"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i77ekg.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="menualt82"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/menualt82.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="tiles50"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/tiles50.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i66microphone"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i66microphone.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i92testtube"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i92testtube.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="checkall"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/checkall.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i24gift"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i24gift.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i157wrench"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i157wrench.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="uranus"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/uranus.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i17barchart"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i17barchart.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ilistcollapsed"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/ilistcollapsed.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i102walk"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i102walk.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="listicon50"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/listicon50.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="list"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/list.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="check_latency"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/check_latency.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i74location"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i74location.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="icheckall"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/icheckall.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i158wrench2"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i158wrench2.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i88beermug"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i88beermug.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i28star"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i28star.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ilistexpanded"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/ilistexpanded.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="itiles50"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/itiles50.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="check_active"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/check_active.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i115bowandarrow"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i115bowandarrow.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i106sliders"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i106sliders.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i58bookmark"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i58bookmark.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="check_all"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/check_all.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="neptune"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/neptune.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i152rolodex"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i152rolodex.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ilisticon"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/ilisticon.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="tiles"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/tiles.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="menualt50"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/menualt50.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="imenualt50"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/imenualt50.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ivenn"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/ivenn.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i42photos"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i42photos.png"
                 qualifiers=""
                 type="drawable" />
             <file
                 name="venus"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\venus.jpg"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/venus.jpg"
                 qualifiers=""
                 type="drawable" />
             <file
+                name="i111user"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i111user.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i151telescope"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i151telescope.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i139flags"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i139flags.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="tileslittle50"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/tileslittle50.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i138scales"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i138scales.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="earth"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/earth.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="mars"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/mars.jpg"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i12eye"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i12eye.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i1698ball"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i1698ball.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="checkactive"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/checkactive.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i68paperclip"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i68paperclip.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i112group"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i112group.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ilisticon50"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/ilisticon50.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="itiles"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/itiles.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ichecklatency"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/ichecklatency.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="idice"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/idice.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i73radar"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i73radar.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i103map"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i103map.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="listcollapsed"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/listcollapsed.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i29heartred"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i29heartred.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i71compass"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i71compass.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="checkpending"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/checkpending.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i08chat"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i08chat.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i15tags"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i15tags.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="i54lock"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable/i54lock.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_drawer"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-xhdpi/ic_drawer.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
                 name="action_search"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-hdpi\action_search.png"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-xhdpi/action_search.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-xhdpi/ic_launcher.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="drawer_shadow"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-xhdpi/drawer_shadow.9.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_drawer"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-mdpi/ic_drawer.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="action_search"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-mdpi/action_search.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-mdpi/ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="drawer_shadow"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-mdpi/drawer_shadow.9.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_drawer"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-hdpi/ic_drawer.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="action_search"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-hdpi/action_search.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-hdpi/ic_launcher.png"
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
                 name="drawer_shadow"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-hdpi\drawer_shadow.9.png"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-hdpi/drawer_shadow.9.png"
                 qualifiers="hdpi-v4"
                 type="drawable" />
             <file
-                name="ic_drawer"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-hdpi\ic_drawer.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="ic_launcher"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-hdpi\ic_launcher.png"
-                qualifiers="hdpi-v4"
-                type="drawable" />
-            <file
-                name="action_search"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-mdpi\action_search.png"
-                qualifiers="mdpi-v4"
-                type="drawable" />
-            <file
-                name="drawer_shadow"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-mdpi\drawer_shadow.9.png"
-                qualifiers="mdpi-v4"
-                type="drawable" />
-            <file
-                name="ic_drawer"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-mdpi\ic_drawer.png"
-                qualifiers="mdpi-v4"
-                type="drawable" />
-            <file
-                name="ic_launcher"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-mdpi\ic_launcher.png"
-                qualifiers="mdpi-v4"
-                type="drawable" />
-            <file
-                name="action_search"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-xhdpi\action_search.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="drawer_shadow"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-xhdpi\drawer_shadow.9.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="ic_drawer"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-xhdpi\ic_drawer.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="ic_launcher"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-xhdpi\ic_launcher.png"
-                qualifiers="xhdpi-v4"
-                type="drawable" />
-            <file
-                name="ic_launcher"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable-xxhdpi\ic_launcher.png"
-                qualifiers="xxhdpi-v4"
-                type="drawable" />
-            <file
-                name="activity_main"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\activity_main.xml"
+                name="userrow"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/layout/userrow.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="drawer_list_item"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\drawer_list_item.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="fragment_item_grid"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\fragment_item_grid.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="fragment_item_list"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\fragment_item_list.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="fragment_planet"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\fragment_planet.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="header"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\header.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="main_content"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\main_content.xml"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/layout/drawer_list_item.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="subheader"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\subheader.xml"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/layout/subheader.xml"
                 qualifiers=""
                 type="layout" />
             <file
-                name="userrow"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\userrow.xml"
+                name="fragment_item_grid"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/layout/fragment_item_grid.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_planet"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/layout/fragment_planet.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="main_content"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/layout/main_content.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="header"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/layout/header.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_main"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/layout/activity_main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_item_list"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/layout/fragment_item_list.xml"
                 qualifiers=""
                 type="layout" />
             <file
                 name="main"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\menu\main.xml"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/menu/main.xml"
                 qualifiers=""
                 type="menu" />
             <file
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\values\refs.xml"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/values/refs.xml"
                 qualifiers="" >
                 <item
                     name="fragment_ditto_some"
@@ -213,13 +703,15 @@
                 </item>
             </file>
             <file
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\values\strings.xml"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/values/strings.xml"
                 qualifiers="" >
                 <string name="hello_blank_fragment" >Hello blank fragment
                 </string>
                 <string name="app_name" >Plitto
                 </string>
                 <string name="action_websearch" >Web search
+                </string>
+                <string name="action_refresh" >Refresh
                 </string>
                 <string name="drawer_open" >Open navigation drawer
                 </string>
@@ -285,520 +777,7 @@ Neptune
                 </string>
             </file>
             <file
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\values-large\refs.xml"
-                qualifiers="large-v4" >
-                <item
-                    name="fragment_ditto_some"
-                    type="layout">
-@layout/fragment_item_grid
-                </item>
-            </file>
-            <file
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\values-sw600dp\refs.xml"
-                qualifiers="sw600dp-v13" >
-                <item
-                    name="fragment_ditto_some"
-                    type="layout">
-@layout/fragment_item_grid
-                </item>
-            </file>
-            <file
-                name="checklatency"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\checklatency.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="menualt512"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\menualt512.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="menualt50"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\menualt50.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="listicon"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\listicon.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="checkactive"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\checkactive.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="checkpending"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\checkpending.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="checkall"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\checkall.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="listexpanded"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\listexpanded.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="listcollapsed"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\listcollapsed.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="chevrondown"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\chevrondown.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="menualt82"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\menualt82.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="listicon50"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\listicon50.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="tileslittle50"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\tileslittle50.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="tiles50"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\tiles50.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i191collection"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i191collection.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i40inbox"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i40inbox.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i142winebottle"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i142winebottle.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i18envelope"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i18envelope.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i11clock"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i11clock.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i28star"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i28star.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="itiles50"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\itiles50.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i07mapmarker"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i07mapmarker.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="itileslittle50"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\itileslittle50.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i29heartred"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i29heartred.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i130dice"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i130dice.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i123idcard"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i123idcard.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i15tags"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i15tags.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i143liquorbottle"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i143liquorbottle.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i108badge"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i108badge.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="ichecklatency"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\ichecklatency.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i95equalizer"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i95equalizer.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="ilistcollapsed"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\ilistcollapsed.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i58bookmark"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i58bookmark.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i55network"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i55network.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i104indexcards"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i104indexcards.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i71compass"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i71compass.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="idice"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\idice.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="imenualt50"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\imenualt50.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i112group"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i112group.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i138scales"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i138scales.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="imenualt82"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\imenualt82.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i16linechart"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i16linechart.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i12eye"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i12eye.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i157wrench"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i157wrench.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="itiles"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\itiles.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i92testtube"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i92testtube.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i19gear"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i19gear.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i02redo"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i02redo.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i73radar"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i73radar.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i24gift"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i24gift.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="ilisticon50"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\ilisticon50.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="imenualt512"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\imenualt512.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i60signpost"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i60signpost.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i115bowandarrow"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i115bowandarrow.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i42photos"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i42photos.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i17barchart"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i17barchart.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i1698ball"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i1698ball.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i111user"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i111user.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="ilistexpanded"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\ilistexpanded.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i20gear2"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i20gear2.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i184warning"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i184warning.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i139flags"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i139flags.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i117todo"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i117todo.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="ilisticon"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\ilisticon.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i03loopback"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i03loopback.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i08chat"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i08chat.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="iquotefaces"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\iquotefaces.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i158wrench2"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i158wrench2.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i295shield"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i295shield.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i91beaker2"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i91beaker2.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i103map"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i103map.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i77ekg"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i77ekg.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i06magnify"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i06magnify.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="ichevrondown"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\ichevrondown.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i193locationarrow"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i193locationarrow.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="ilist"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\ilist.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="icheckpending"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\icheckpending.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="icheckall"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\icheckall.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i33cabinet"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i33cabinet.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i54lock"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i54lock.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i84lightbulb"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i84lightbulb.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i66microphone"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i66microphone.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i14tag"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i14tag.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i85trophy"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i85trophy.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i122stats"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i122stats.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i106sliders"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i106sliders.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i05shuffle"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i05shuffle.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i151telescope"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i151telescope.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="icheckactive"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\icheckactive.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i74location"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i74location.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i187pencil"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i187pencil.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="ivenn"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\ivenn.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i152rolodex"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i152rolodex.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i68paperclip"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i68paperclip.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i101gameplan"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i101gameplan.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i29heart"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i29heart.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i88beermug"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i88beermug.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i102walk"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i102walk.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                name="i78stopwatch"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\drawable\i78stopwatch.png"
-                qualifiers=""
-                type="drawable" />
-            <file
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\values\styles.xml"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/values/styles.xml"
                 qualifiers="" >
 
                 <style
@@ -834,12 +813,55 @@ Neptune
                     </item>
                 </style>
             </file>
+            <file
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/values-large/refs.xml"
+                qualifiers="large-v4" >
+                <item
+                    name="fragment_ditto_some"
+                    type="layout">
+@layout/fragment_item_grid
+                </item>
+            </file>
+            <file
+                name="ic_launcher"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-xxhdpi/ic_launcher.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/values-sw600dp/refs.xml"
+                qualifiers="sw600dp-v13" >
+                <item
+                    name="fragment_ditto_some"
+                    type="layout">
+@layout/fragment_item_grid
+                </item>
+            </file>
+            <file
+                name="ic_action_refresh"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-xxhdpi/ic_action_refresh.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_refresh"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-mdpi/ic_action_refresh.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_refresh"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-xhdpi/ic_action_refresh.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_action_refresh"
+                path="/home/batman/projects/android/Plitto4.4E/app/src/main/res/drawable-hdpi/ic_action_refresh.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
         </source>
-        <source path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\generated\res\rs\debug" />
-        <source path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\generated\res\generated\debug" />
+        <source path="/home/batman/projects/android/Plitto4.4E/app/build/generated/res/rs/debug" />
+        <source path="/home/batman/projects/android/Plitto4.4E/app/build/generated/res/generated/debug" />
     </dataSet>
     <dataSet config="debug" >
-        <source path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\debug\res" />
+        <source path="/home/batman/projects/android/Plitto4.4E/app/src/debug/res" />
     </dataSet>
 
 </merger>

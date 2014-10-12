@@ -10,4 +10,4 @@
     android:textColor="#fff"
     android:background="?android:attr/activatedBackgroundIndicator"
     android:minHeight="?android:attr/listPreferredItemHeightSmall"
-    style="@style/ListItem"/><!-- From: file:/C:/Users/Ben/AndroidStudioProjects/Plitto4.4E/app/src/main/res/layout/drawer_list_item.xml -->
+    style="@style/ListItem"/><!-- From: file:/home/batman/projects/android/Plitto4.4E/app/src/main/res/layout/drawer_list_item.xml -->
