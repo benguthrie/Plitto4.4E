@@ -14,7 +14,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/txt"
             android:layout_weight="70"
-            android:layout_width="match_parent" />
+            android:layout_width="match_parent"
+            style="@style/textOnWhite" />
 
 
         <ImageView
@@ -30,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:id="@+id/date" />
+        android:id="@+id/date"
+        style="@style/textDetail" />
 </LinearLayout>
-<!-- From: file:/home/batman/projects/android/Plitto4.4E/app/src/main/res/layout/main_content.xml -->
+<!-- From: file:/C:/Users/Ben/AndroidStudioProjects/Plitto4.4E/app/src/main/res/layout/main_content.xml -->

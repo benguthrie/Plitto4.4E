@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/home/batman/projects/android/Plitto4.4E/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Ben/AndroidStudioProjects/Plitto4.4E/app/src/main/res/values/strings.xml -->
     <eat-comment />
 
     <string-array name="nav_array">
@@ -24,11 +24,11 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
-    <!-- From: file:/home/batman/projects/android/Plitto4.4E/app/src/main/res/values/refs.xml -->
+    <!-- From: file:/C:/Users/Ben/AndroidStudioProjects/Plitto4.4E/app/src/main/res/values/refs.xml -->
     <eat-comment />
 
     <item name="fragment_ditto_some" type="layout">@layout/fragment_item_list</item>
-    <!-- From: file:/home/batman/projects/android/Plitto4.4E/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Ben/AndroidStudioProjects/Plitto4.4E/app/src/main/res/values/strings.xml -->
     <eat-comment />
 
     <string name="action_refresh">Refresh</string>
@@ -38,22 +38,43 @@
     <string name="drawer_close">Close navigation drawer</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!-- From: file:/home/batman/projects/android/Plitto4.4E/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Ben/AndroidStudioProjects/Plitto4.4E/app/src/main/res/values/styles.xml -->
     <eat-comment />
+
+    <style name="GREEN" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">#69f000</item>
+    </style>
 
     <style name="ListItem" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">#000000</item>
-        <item name="android:colorBackground">#ff4ff4</item>
+        <item name="android:background">#ff4ff4</item>
     </style>
 
     <style name="ListRow" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">#ffffff</item>
-        <item name="android:colorBackground">#3FA8B0</item>
+        <item name="android:background">#3FA8B0</item>
     </style>
 
-    <style name="UserRow" parent="@android:style/TextAppearance.Medium">
+    <style name="UserRow" parent="@android:style/TextAppearance.Large">
         <item name="android:textColor">#ffffff</item>
-        <item name="android:colorBackground">#33d33d</item>
+        <item name="android:background">#32868c</item>
+    </style>
+
+    <style name="textDetail" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="textOnDark" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="textOnWhite" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="userimage" parent="@android:style/TextAppearance.Small">
+        <item name="android:textColor">#000000</item>
     </style>
 
 </resources>
