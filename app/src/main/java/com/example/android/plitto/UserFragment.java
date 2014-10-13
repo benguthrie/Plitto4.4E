@@ -15,7 +15,7 @@ public class UserFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.user_line,
+        View view = inflater.inflate(R.layout.fragment_user_main,
                 container, false);
         TextView tv = (TextView)view.findViewById(R.id.content);
         tv.setText(getArguments().getString("username", ""));

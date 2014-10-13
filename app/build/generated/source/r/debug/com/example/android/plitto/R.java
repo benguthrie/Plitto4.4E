@@ -138,19 +138,28 @@ public final class R {
         public static final int venus=0x7f020078;
     }
     public static final class id {
-        public static final int action_refresh=0x7f08000e;
-        public static final int action_websearch=0x7f08000d;
-        public static final int content=0x7f080008;
+        public static final int Ditto=0x7f080009;
+        public static final int Feed=0x7f08000d;
+        public static final int Lists=0x7f080011;
+        public static final int Me=0x7f08000c;
+        public static final int Shared=0x7f08000b;
+        public static final int Us=0x7f080010;
+        public static final int action_refresh=0x7f080017;
+        public static final int action_websearch=0x7f080016;
+        public static final int addItemToList=0x7f080007;
+        public static final int content=0x7f080006;
         public static final int content_frame=0x7f080001;
-        public static final int date=0x7f08000b;
+        public static final int date=0x7f080014;
         public static final int drawer_layout=0x7f080000;
         public static final int gridTitle=0x7f080004;
-        public static final int heading=0x7f080007;
-        public static final int image=0x7f080006;
-        public static final int img=0x7f08000a;
+        public static final int image=0x7f08000e;
+        public static final int imageView=0x7f08000f;
+        public static final int img=0x7f080013;
         public static final int left_drawer=0x7f080002;
-        public static final int rowTextView=0x7f08000c;
-        public static final int txt=0x7f080009;
+        public static final int rowTextView=0x7f080015;
+        public static final int tabHost=0x7f080008;
+        public static final int textView=0x7f08000a;
+        public static final int txt=0x7f080012;
         public static final int userlist=0x7f080005;
         public static final int username=0x7f080003;
     }
@@ -160,12 +169,12 @@ public final class R {
         public static final int fragment_ditto_some=0x7f03000b;
         public static final int fragment_item_grid=0x7f030002;
         public static final int fragment_item_list=0x7f030003;
-        public static final int fragment_planet=0x7f030004;
-        public static final int list_line=0x7f030005;
-        public static final int main_content=0x7f030006;
-        public static final int row_list=0x7f030007;
-        public static final int row_user=0x7f030008;
-        public static final int user_line=0x7f030009;
+        public static final int fragment_list_main=0x7f030004;
+        public static final int fragment_planet=0x7f030005;
+        public static final int fragment_user_main=0x7f030006;
+        public static final int main_content=0x7f030007;
+        public static final int row_list=0x7f030008;
+        public static final int row_user=0x7f030009;
         public static final int userrow=0x7f03000a;
     }
     public static final class menu {
@@ -184,10 +193,11 @@ public final class R {
         public static final int GREEN=0x7f060000;
         public static final int ListItem=0x7f060001;
         public static final int ListRow=0x7f060002;
-        public static final int UserRow=0x7f060003;
-        public static final int textDetail=0x7f060004;
-        public static final int textOnDark=0x7f060005;
-        public static final int textOnWhite=0x7f060006;
-        public static final int userimage=0x7f060007;
+        public static final int TabStyle=0x7f060003;
+        public static final int TabStyleButtons=0x7f060004;
+        public static final int UserRow=0x7f060005;
+        public static final int textDetail=0x7f060006;
+        public static final int textOnDark=0x7f060007;
+        public static final int textOnWhite=0x7f060008;
     }
 }

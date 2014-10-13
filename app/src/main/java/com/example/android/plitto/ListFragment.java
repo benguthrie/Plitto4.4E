@@ -15,9 +15,9 @@ public class ListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.list_line,
+        View view = inflater.inflate(R.layout.fragment_list_main,
                 container, false);
-        TextView tv = (TextView)view.findViewById(R.id.content);
+        TextView tv = (TextView) view.findViewById(R.id.content);
         tv.setText(getArguments().getString("username", ""));
         return view;
     }
