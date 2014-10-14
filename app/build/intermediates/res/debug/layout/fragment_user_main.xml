@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="User Name"
+        android:id="@+id/content"
+        android:autoText="false"
+        android:padding="10dp"
+        style="@style/UserRow"
+        />
+
+    <TabHost
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/tabHost"
+        style="@style/TabStyle">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                style="@style/TabStyleButtons"></TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <LinearLayout
+                    android:id="@+id/Shared"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView"
+                        android:src="@drawable/check_active" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Ditto"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"></LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/Feed"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"></LinearLayout>
+                <LinearLayout
+                    android:id="@+id/Us"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"></LinearLayout>
+                <LinearLayout
+                    android:id="@+id/Lists"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"></LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
+</LinearLayout>
+<!-- From: file:/C:/Users/Ben/AndroidStudioProjects/Plitto4.4E/app/src/main/res/layout/fragment_user_main.xml -->

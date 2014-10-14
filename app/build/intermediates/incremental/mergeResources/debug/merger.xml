@@ -689,13 +689,33 @@
                 qualifiers=""
                 type="layout" />
             <file
+                name="fragment_list_main"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\fragment_list_main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
                 name="fragment_planet"
                 path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\fragment_planet.xml"
                 qualifiers=""
                 type="layout" />
             <file
+                name="fragment_user_main"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\fragment_user_main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
                 name="main_content"
                 path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\main_content.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="row_list"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\row_list.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="row_user"
+                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\row_user.xml"
                 qualifiers=""
                 type="layout" />
             <file
@@ -724,11 +744,9 @@
                 </string>
                 <string name="app_name" >Plitto
                 </string>
-                <string name="action_refresh" >Refresh
-                </string>
                 <string name="action_websearch" >Web search
                 </string>
-                <string name="drawer_open" >Open navigation drawer
+                <string name="action_refresh" >Refresh
                 </string>
 
                 <string-array name="nav_array" >
@@ -758,7 +776,7 @@ Everything
                     </item>
                 </string-array>
 
-                <string name="drawer_close" >Close navigation drawer
+                <string name="drawer_open" >Open navigation drawer
                 </string>
 
                 <string-array name="planets_array" >
@@ -788,6 +806,8 @@ Neptune
                     </item>
                 </string-array>
 
+                <string name="drawer_close" >Close navigation drawer
+                </string>
                 <string name="app_not_available" >Sorry, there\'s no web browser available
                 </string>
             </file>
@@ -823,10 +843,29 @@ Neptune
                 </style>
 
                 <style
+                    name="TabStyleButtons"
+                    parent="@android:style/TextAppearance.Small" >
+                    <item name="android:textColor">
+#000000
+                    </item>
+                    <item name="android:background">
+#F49653
+                    </item>
+                </style>
+
+                <style
                     name="textOnDark"
                     parent="@android:style/TextAppearance.Medium" >
                     <item name="android:textColor">
 #ffffff
+                    </item>
+                </style>
+
+                <style
+                    name="TabStyle"
+                    parent="@android:style/TextAppearance.Small" >
+                    <item name="android:textColor">
+#000000
                     </item>
                 </style>
 
@@ -838,14 +877,6 @@ Neptune
                     </item>
                     <item name="android:background">
 #3FA8B0
-                    </item>
-                </style>
-
-                <style
-                    name="userimage"
-                    parent="@android:style/TextAppearance.Small" >
-                    <item name="android:textColor">
-#000000
                     </item>
                 </style>
 
@@ -889,26 +920,6 @@ Neptune
 @layout/fragment_item_grid
                 </item>
             </file>
-            <file
-                name="row_list"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\row_list.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="row_user"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\row_user.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="list_line"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\list_line.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="user_line"
-                path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\user_line.xml"
-                qualifiers=""
-                type="layout" />
         </source>
         <source path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\generated\res\rs\debug" />
         <source path="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\generated\res\generated\debug" />
