@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import android.app.Fragment;
+import android.app.Activity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,9 +37,9 @@ public class PlittoFragment extends Fragment {
     ListView listview;
     List<RowInfo> content;
     HashMap<Integer, Integer> map;
+    private FragmentActivity myContext;
 
     public PlittoFragment() {
-
     }
 
     public static PlittoFragment newInstance(int position) {
@@ -47,6 +50,13 @@ public class PlittoFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
+    @Override
+    public void onAttach(Activity activity) {
+        myContext=(FragmentActivity) activity;
+        super.onAttach(activity);
+    }
+
 
     // TODO Change these to handle the correct Plitto Fragment
     @Override
@@ -66,8 +76,12 @@ public class PlittoFragment extends Fragment {
                 {
                     String name = content.get(i).getName();
                     UserFragment fragment = UserFragment.newInstance(name);
-                    android.app.FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    android.support.v4.app.FragmentManager fm = myContext.getSupportFragmentManager();
+                    FragmentTransaction transaction = fm.beginTransaction();
+                    transaction.show(fragment);
+                    transaction.commit();
+
+                    //fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
 
                 }
 
@@ -75,8 +89,8 @@ public class PlittoFragment extends Fragment {
                 {
                     String name = content.get(i).getName();
                     ListFragment fragment = ListFragment.newInstance(name);
-                    android.app.FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    android.support.v4.app.FragmentManager fragmentManager = myContext.getSupportFragmentManager();
+                    fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
 
                 }
             }
@@ -119,7 +133,6 @@ public class PlittoFragment extends Fragment {
         // new HttpAsyncTask().execute(getSomeUrl);
         new HttpAsyncTask().execute(getSomeUrl);
         // TODO - Update the list contents based on the condition
-
     }
 
 

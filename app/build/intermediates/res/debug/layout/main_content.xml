@@ -34,4 +34,4 @@
         android:id="@+id/date"
         style="@style/textDetail" />
 </LinearLayout>
-<!-- From: file:/C:/Users/Ben/AndroidStudioProjects/Plitto4.4E/app/src/main/res/layout/main_content.xml -->
+<!-- From: file:/home/batman/projects/android/Plitto4.4E/app/src/main/res/layout/main_content.xml -->

@@ -1,19 +1,3 @@
-/*
- * Copyright 2013 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.android.plitto;
 
 
@@ -23,14 +7,16 @@ import java.io.InputStreamReader;
 import java.util.Locale;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
@@ -46,6 +32,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.util.Log;
 
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.SharedPreferencesTokenCachingStrategy;
+import com.facebook.UiLifecycleHelper;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
@@ -59,7 +49,20 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
+
+
+    private static final String USER_SKIPPED_LOGIN_KEY = "user_skipped_login";
+
+    private static final int SPLASH = 0;
+    private static final int SELECTION = 1;
+    private static final int FRAGMENT_COUNT = SELECTION +1;
+
+    private Fragment[] fragments = new Fragment[FRAGMENT_COUNT];
+    private MenuItem settings;
+    private boolean isResumed = false;
+    private boolean userSkippedLogin = false;
+    private UiLifecycleHelper uiHelper;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -68,30 +71,29 @@ public class MainActivity extends Activity {
     private CharSequence mTitle;
     private String[] mNavTitles;
 
+    Fragment fbFragment;
+
+    private Session.StatusCallback callback = new Session.StatusCallback() {
+        @Override
+        public void call(Session session, SessionState state, Exception exception) {
+            onSessionStateChange(session, state, exception);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mTitle = mDrawerTitle = getTitle();
-        // mPlanetTitles = getResources().getStringArray(R.array.planets_array);
         mNavTitles = getResources().getStringArray(R.array.nav_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
-        // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
-        // set up the drawer's list view with items and click listener
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, mNavTitles));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-
-        // enable ActionBar app icon to behave as action to toggle nav drawer
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-
-        // ActionBarDrawerToggle ties together the the proper interactions
-        // between the sliding drawer and the action bar app icon
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
@@ -110,18 +112,70 @@ public class MainActivity extends Activity {
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-        if (savedInstanceState == null) {
-            selectItem(0);
+        if (savedInstanceState != null) {
+            getActionBar().show();
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+            Log.e("IFFFFF",""+savedInstanceState.toString());
+            fbFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.content_frame);
         }
+        else
+        {
+            Log.e("IFFFFF","ELSEEE");
+            Fragment dd = new MainFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new SplashFragment()).commit();
+            getActionBar().show();
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+
+
+        }
+
+        uiHelper = new UiLifecycleHelper(this, callback);
+        uiHelper.onCreate(savedInstanceState);
+
+        SplashFragment splashFragment = new SplashFragment();
+        fragments[SPLASH] = splashFragment;
+        fragments[SELECTION] = PlittoFragment.newInstance(0);
+
+
+    }
+
+
+
+    private void showFragment(int fragmentIndex, boolean addToBackStack) {
+        //Toast.makeText(this,"SHOW",Toast.LENGTH_LONG).show();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        for (int i = 0; i < fragments.length; i++) {
+            if (i == fragmentIndex) {
+                transaction.replace(R.id.content_frame,PlittoFragment.newInstance(0));
+            } else {
+                transaction.hide(fragments[i]);
+            }
+        }
+        if (addToBackStack) {
+            transaction.addToBackStack(null);
+        }
+        transaction.commit();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
+
+        if (fragments[SELECTION].isVisible()) {
+            if (menu.size() == 0) {
+                settings = menu.add(R.string.settings);
+            }
+            return true;
+        } else {
+            menu.clear();
+            settings = null;
+        }
+        return false;
     }
+
+
 
     /* Called whenever we call invalidateOptionsMenu() */
     @Override
@@ -154,7 +208,7 @@ public class MainActivity extends Activity {
                 return true;
             case R.id.action_refresh:
                 Fragment fragment2 = PlittoFragment.newInstance(0);
-                FragmentManager fragmentManager = getFragmentManager();
+                FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.content_frame, fragment2).commit();
 
             default:
@@ -176,24 +230,41 @@ public class MainActivity extends Activity {
         // update the main content by replacing fragments
         if (position < 3) {
             Fragment fragment2 = PlittoFragment.newInstance(position);
-            FragmentManager fragmentManager = getFragmentManager();
+            FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.content_frame, fragment2).commit();
             mDrawerList.setItemChecked(position, true);
             setTitle(mNavTitles[position]);
             mDrawerLayout.closeDrawer(mDrawerList);
         } else {
-            Fragment fragment = new PlanetFragment();
-            Bundle args = new Bundle();
-            args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-            fragment.setArguments(args);
+            if(position == 6)
+            {
+                Session session = Session.getActiveSession();
+                if (session != null) {
+                    session.closeAndClearTokenInformation();
+                }
+                else
+                {
+                    Session session2 = Session.openActiveSession((Activity)this, false, null);
+                    if(session2 != null)
+                        session2.closeAndClearTokenInformation();
+                }
+                Session.setActiveSession(null);
 
-            FragmentManager fragmentManager2 = getFragmentManager();
-            fragmentManager2.beginTransaction().replace(R.id.content_frame, fragment).commit();
+            }
+            else {
+                Fragment fragment = new PlanetFragment();
+                Bundle args = new Bundle();
+                args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
+                fragment.setArguments(args);
 
-            // update selected item and title, then close the drawer
-            mDrawerList.setItemChecked(position, true);
-            setTitle(mNavTitles[position]);
-            mDrawerLayout.closeDrawer(mDrawerList);
+                FragmentManager fragmentManager2 = getSupportFragmentManager();
+                fragmentManager2.beginTransaction().replace(R.id.content_frame, fragment).commit();
+
+                // update selected item and title, then close the drawer
+                mDrawerList.setItemChecked(position, true);
+                setTitle(mNavTitles[position]);
+                mDrawerLayout.closeDrawer(mDrawerList);
+            }
         }
     }
 
@@ -208,12 +279,15 @@ public class MainActivity extends Activity {
      * onPostCreate() and onConfigurationChanged()...
      */
 
+
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
     }
+
 
     /* REST Calls */
     private static String convertInputStreamToString(InputStream inputStream) throws IOException {
@@ -228,96 +302,6 @@ public class MainActivity extends Activity {
 
     }
 
-    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... urls) {
-
-            OkHttpClient client = new OkHttpClient();
-
-            String url = urls[0];
-            Request request = new Request.Builder()
-                    .url(url)
-                    .build();
-
-            Response response = null;
-            try {
-                response = client.newCall(request).execute();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                return response.body().string();
-            } catch (IOException e) {
-                return null;
-            }
-
-        }
-
-        // onPostExecute displays the results of the AsyncTask.
-        @Override
-        protected void onPostExecute(String result) {
-            Toast.makeText(getApplicationContext(), "Data Sent!", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    // public static String POST(String url, Person person){
-    public static String POST(String url) {
-        InputStream inputStream = null;
-        String result = "";
-        try {
-
-            // 1. create HttpClient
-            HttpClient httpclient = new DefaultHttpClient();
-
-            // 2. make POST request to the given URL
-            HttpPost httpPost = new HttpPost(url);
-
-            String json = "";
-
-            // 3. build jsonObject
-            JSONObject jsonObject = new JSONObject();
-             /* RETURN LATER
-
-              jsonObject.accumulate("name", person.getName());
-              jsonObject.accumulate("country", person.getCountry());
-              jsonObject.accumulate("twitter", person.getTwitter());
-            */
-            // 4. convert JSONObject to JSON to String
-            json = jsonObject.toString();
-
-            // ** Alternative way to convert Person object to JSON string usin Jackson Lib
-            // ObjectMapper mapper = new ObjectMapper();
-            // json = mapper.writeValueAsString(person);
-
-            // 5. set json to StringEntity
-            StringEntity se = new StringEntity(json);
-
-            // 6. set httpPost Entity
-            httpPost.setEntity(se);
-
-            // 7. Set some headers to inform server about the type of the content
-            httpPost.setHeader("Accept", "application/json");
-            httpPost.setHeader("Content-type", "application/json");
-
-            // 8. Execute POST request to the given URL
-            HttpResponse httpResponse = httpclient.execute(httpPost);
-
-            // 9. receive response as inputStream
-            inputStream = httpResponse.getEntity().getContent();
-
-            // 10. convert inputstream to string
-            if (inputStream != null)
-                result = convertInputStreamToString(inputStream);
-            else
-                result = "Did not work!";
-
-        } catch (Exception e) {
-            Log.d("InputStream", e.getLocalizedMessage());
-        }
-
-        // 11. return result
-        return result;
-    }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -358,4 +342,130 @@ public class MainActivity extends Activity {
             return rootView;
         }
     }
+
+
+
+
+    @Override
+    protected void onResumeFragments() {
+        super.onResumeFragments();
+        Session session = Session.getActiveSession();
+
+        if (session != null && session.isOpened()) {
+            // if the session is already open, try to show the selection fragment
+            showFragment(SELECTION, false);
+            userSkippedLogin = false;
+        } else if (userSkippedLogin) {
+            showFragment(SELECTION, false);
+        } else {
+            // otherwise present the splash screen and ask the user to login, unless the user explicitly skipped.
+            showFragment(SPLASH, false);
+        }
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        uiHelper.onResume();
+        isResumed = true;
+
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        uiHelper.onActivityResult(requestCode, resultCode, data);
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        uiHelper.onPause();
+        isResumed = false;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        uiHelper.onDestroy();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        uiHelper.onSaveInstanceState(outState);
+
+        outState.putBoolean(USER_SKIPPED_LOGIN_KEY, userSkippedLogin);
+    }
+
+
+    private void onSessionStateChange(Session session, SessionState state, Exception exception) {
+        if (isResumed) {
+            FragmentManager manager = getSupportFragmentManager();
+            int backStackSize = manager.getBackStackEntryCount();
+            for (int i = 0; i < backStackSize; i++) {
+                manager.popBackStack();
+            }
+            // check for the OPENED state instead of session.isOpened() since for the
+            // OPENED_TOKEN_UPDATED state, the selection fragment should already be showing.
+            if (state.equals(SessionState.OPENED)) {
+                getActionBar().show();
+                mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+                FragmentManager fm = getSupportFragmentManager();
+                fm.beginTransaction().replace(R.id.content_frame,PlittoFragment.newInstance(0)).commit();
+            } else if (state.isClosed()) {
+                Toast.makeText(this,"Logging out",Toast.LENGTH_LONG).show();
+                getActionBar().hide();
+                mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+
+                FragmentManager fm = getSupportFragmentManager();
+                fm.beginTransaction().replace(R.id.content_frame, new SplashFragment()).commit();
+
+            }
+        }
+    }
+
+/*
+    public void disconnectFacebookAccount()
+    {
+
+        new AsyncTask<Void, Void, Boolean>()
+        {
+            @Override
+            protected Boolean doInBackground(Void... params)
+            {
+                if (Session.getActiveSession() != null)
+                    Session.getActiveSession().closeAndClearTokenInformation();
+
+                clearFacebookInfoFromSharedPreferences();
+
+                // perform any other operations you need to do perform here
+                // such as clearing local database tables and so forth
+
+                return true;
+            }
+
+            @Override
+            protected void onPostExecute(Boolean result)
+            {
+                // safety check
+                if (isFinishing())
+                    return;
+
+                if (result == null
+                        || result == false)
+                    onFailedFacebookDisconnect();
+                else
+                    onSucceededFacebookDisconnect();
+            }
+        }.execute();
+    }*/
+
+
+
+
+
 }
