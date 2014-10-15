@@ -4,9 +4,18 @@ package com.example.android.plitto;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import android.content.pm.Signature;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 
 import android.app.Activity;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.app.SearchManager;
@@ -19,6 +28,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.text.TextUtils;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,15 +43,19 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.util.Log;
 
+import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.SessionState;
+import com.facebook.Request;
 import com.facebook.SharedPreferencesTokenCachingStrategy;
 import com.facebook.UiLifecycleHelper;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import com.facebook.model.GraphMultiResult;
+import com.facebook.model.GraphObject;
+import com.facebook.model.GraphObjectList;
+import com.facebook.model.GraphUser;
 
 import java.io.IOException;
+import java.util.Set;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -71,6 +86,8 @@ public class MainActivity extends FragmentActivity {
     private CharSequence mTitle;
     private String[] mNavTitles;
 
+    private MainFragment mainFragment;
+
     Fragment fbFragment;
 
     private Session.StatusCallback callback = new Session.StatusCallback() {
@@ -84,6 +101,8 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //
         mTitle = mDrawerTitle = getTitle();
         mNavTitles = getResources().getStringArray(R.array.nav_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -100,7 +119,8 @@ public class MainActivity extends FragmentActivity {
                 R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */
                 R.string.drawer_open,  /* "open drawer" description for accessibility */
                 R.string.drawer_close  /* "close drawer" description for accessibility */
-        ) {
+        )
+        {
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
@@ -112,67 +132,70 @@ public class MainActivity extends FragmentActivity {
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-        if (savedInstanceState != null) {
-            getActionBar().show();
-            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-            Log.e("IFFFFF",""+savedInstanceState.toString());
-            fbFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.content_frame);
+
+        //
+
+
+        try {
+            PackageInfo info =     getPackageManager().getPackageInfo("com.example.android.plitto",PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String sign= Base64.encodeToString(md.digest(), Base64.DEFAULT);
+                Log.e("HASH", sign);
+            }
         }
-        else
-        {
-            Log.e("IFFFFF","ELSEEE");
-            Fragment dd = new MainFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, new SplashFragment()).commit();
-            getActionBar().show();
-            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        catch (NoSuchAlgorithmException e) {
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
 
+
+        if (savedInstanceState != null) {
+            userSkippedLogin = savedInstanceState.getBoolean(USER_SKIPPED_LOGIN_KEY);
         }
 
         uiHelper = new UiLifecycleHelper(this, callback);
         uiHelper.onCreate(savedInstanceState);
 
-        SplashFragment splashFragment = new SplashFragment();
-        fragments[SPLASH] = splashFragment;
+
+        FragmentManager fm = getSupportFragmentManager();
+        MainFragment mf = new MainFragment();
+
+        fragments[SPLASH] = mf;
         fragments[SELECTION] = PlittoFragment.newInstance(0);
-
-
     }
 
 
 
     private void showFragment(int fragmentIndex, boolean addToBackStack) {
-        //Toast.makeText(this,"SHOW",Toast.LENGTH_LONG).show();
+        Log.e("Finally","In show fragments");
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        for (int i = 0; i < fragments.length; i++) {
-            if (i == fragmentIndex) {
-                transaction.replace(R.id.content_frame,PlittoFragment.newInstance(0));
-            } else {
-                transaction.hide(fragments[i]);
-            }
+        if(fragmentIndex == SPLASH)
+        {
+            transaction.replace(R.id.content_frame,fragments[SPLASH]);
+            getActionBar().hide();
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         }
-        if (addToBackStack) {
-            transaction.addToBackStack(null);
+        else if(fragmentIndex == SELECTION)
+        {
+            transaction.replace(R.id.content_frame,fragments[SELECTION]);
+            getActionBar().show();
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         }
+        transaction.addToBackStack(null);
         transaction.commit();
+        Log.e("Finally","Done for "+fragmentIndex);
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
-
-        if (fragments[SELECTION].isVisible()) {
-            if (menu.size() == 0) {
-                settings = menu.add(R.string.settings);
-            }
-            return true;
-        } else {
-            menu.clear();
-            settings = null;
-        }
-        return false;
+        return super.onCreateOptionsMenu(menu);
     }
 
 
@@ -229,29 +252,39 @@ public class MainActivity extends FragmentActivity {
         Log.d("Ronak", "position === " + position);
         // update the main content by replacing fragments
         if (position < 3) {
-            Fragment fragment2 = PlittoFragment.newInstance(position);
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment2).commit();
-            mDrawerList.setItemChecked(position, true);
-            setTitle(mNavTitles[position]);
-            mDrawerLayout.closeDrawer(mDrawerList);
-        } else {
+
+            if(position ==2)
+            {
+                //calling friend code here
+                requestMyAppFacebookFriends(Session.getActiveSession());
+
+                //For now see the logcat for results... I will show the list in listview tomorrow
+            }
+            else {
+
+                Fragment fragment2 = PlittoFragment.newInstance(position);
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment2).commit();
+                mDrawerList.setItemChecked(position, true);
+                setTitle(mNavTitles[position]);
+                mDrawerLayout.closeDrawer(mDrawerList);
+            }
+        }
+        else
+        {
             if(position == 6)
             {
-                Session session = Session.getActiveSession();
-                if (session != null) {
-                    session.closeAndClearTokenInformation();
-                }
-                else
-                {
-                    Session session2 = Session.openActiveSession((Activity)this, false, null);
-                    if(session2 != null)
-                        session2.closeAndClearTokenInformation();
-                }
-                Session.setActiveSession(null);
+             Toast.makeText(this,"Logout button clicked",Toast.LENGTH_LONG).show();
+              Session s = Session.getActiveSession();
+              if(s!=null)
+              {
+                  Log.e("Finally","Clearing session data");
+                  s.closeAndClearTokenInformation();
+              }
 
             }
             else {
+                Toast.makeText(this,"ELSE button clicked",Toast.LENGTH_LONG).show();
                 Fragment fragment = new PlanetFragment();
                 Bundle args = new Bundle();
                 args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
@@ -354,10 +387,9 @@ public class MainActivity extends FragmentActivity {
         if (session != null && session.isOpened()) {
             // if the session is already open, try to show the selection fragment
             showFragment(SELECTION, false);
-            userSkippedLogin = false;
-        } else if (userSkippedLogin) {
-            showFragment(SELECTION, false);
-        } else {
+        }
+        else
+        {
             // otherwise present the splash screen and ask the user to login, unless the user explicitly skipped.
             showFragment(SPLASH, false);
         }
@@ -397,75 +429,67 @@ public class MainActivity extends FragmentActivity {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         uiHelper.onSaveInstanceState(outState);
-
         outState.putBoolean(USER_SKIPPED_LOGIN_KEY, userSkippedLogin);
     }
 
 
-    private void onSessionStateChange(Session session, SessionState state, Exception exception) {
+        private void onSessionStateChange(Session session, SessionState state, Exception exception) {
         if (isResumed) {
             FragmentManager manager = getSupportFragmentManager();
             int backStackSize = manager.getBackStackEntryCount();
             for (int i = 0; i < backStackSize; i++) {
                 manager.popBackStack();
             }
-            // check for the OPENED state instead of session.isOpened() since for the
-            // OPENED_TOKEN_UPDATED state, the selection fragment should already be showing.
+
             if (state.equals(SessionState.OPENED)) {
-                getActionBar().show();
-                mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                FragmentManager fm = getSupportFragmentManager();
-                fm.beginTransaction().replace(R.id.content_frame,PlittoFragment.newInstance(0)).commit();
+                Log.e("Finally","In normal state");
+                showFragment(SELECTION, false);
             } else if (state.isClosed()) {
-                Toast.makeText(this,"Logging out",Toast.LENGTH_LONG).show();
-                getActionBar().hide();
-                mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-
-                FragmentManager fm = getSupportFragmentManager();
-                fm.beginTransaction().replace(R.id.content_frame, new SplashFragment()).commit();
-
+                Log.e("Finally","In logout state");
+                showFragment(SPLASH, false);
             }
         }
     }
 
-/*
-    public void disconnectFacebookAccount()
-    {
+    private Request createRequest(Session session) {
+        Request request = Request.newGraphPathRequest(session, "me/friends", null);
 
-        new AsyncTask<Void, Void, Boolean>()
-        {
+        Set<String> fields = new HashSet<String>();
+        String[] requiredFields = new String[] { "id", "name", "picture",
+                "installed" };
+        fields.addAll(Arrays.asList(requiredFields));
+
+        Bundle parameters;
+        parameters = request.getParameters();
+        parameters.putString("fields", TextUtils.join(",", fields));
+        request.setParameters(parameters);
+        return request;
+    }
+
+    private void requestMyAppFacebookFriends(Session session) {
+        Request friendsRequest = createRequest(session);
+        friendsRequest.setCallback(new Request.Callback() {
+
             @Override
-            protected Boolean doInBackground(Void... params)
-            {
-                if (Session.getActiveSession() != null)
-                    Session.getActiveSession().closeAndClearTokenInformation();
-
-                clearFacebookInfoFromSharedPreferences();
-
-                // perform any other operations you need to do perform here
-                // such as clearing local database tables and so forth
-
-                return true;
+            public void onCompleted(Response response) {
+                List<GraphUser> friends = getResults(response);
+                Log.e("Finally",friends.toString());
+                GraphUser friend;
+                for(int i=0;i<friends.size();i++)
+                {
+                    friend = friends.get(i);
+                }
             }
+        });
+        friendsRequest.executeAsync();
+    }
 
-            @Override
-            protected void onPostExecute(Boolean result)
-            {
-                // safety check
-                if (isFinishing())
-                    return;
-
-                if (result == null
-                        || result == false)
-                    onFailedFacebookDisconnect();
-                else
-                    onSucceededFacebookDisconnect();
-            }
-        }.execute();
-    }*/
-
-
-
+    private List<GraphUser> getResults(Response response) {
+        GraphMultiResult multiResult = response
+                .getGraphObjectAs(GraphMultiResult.class);
+        GraphObjectList<GraphObject> data = multiResult.getData();
+        return data.castToListOf(GraphUser.class);
+    }
 
 
 }

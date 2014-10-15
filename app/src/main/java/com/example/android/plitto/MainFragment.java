@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
+import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
 
 import java.util.Arrays;
@@ -23,18 +24,20 @@ import java.util.List;
  * Created by batman on 14/10/14.
  */
 public class MainFragment extends Fragment {
-    final static String ARG_POSITION = "position";
-    int mCurrentPosition = -1;
-    private boolean isResumed = false;
-    private boolean userSkippedLogin = false;
-    private FragmentActivity myContext;
+    FragmentActivity context;
 
-    private static final String USER_SKIPPED_LOGIN_KEY = "user_skipped_login";
-    private static final String TAG = "Facebook";
-    private UiLifecycleHelper uiHelper;
     private final List<String> permissions;
 
+    private SkipLoginCallback skipLoginCallback;
 
+    public interface SkipLoginCallback {
+        void onSkipLoginPressed();
+    }
+
+
+    public void setSkipLoginCallback(SkipLoginCallback callback) {
+        skipLoginCallback = callback;
+    }
 
 
     public MainFragment() {
@@ -46,17 +49,33 @@ public class MainFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        context = (FragmentActivity)activity;
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.splash, container,false);
         LoginButton authButton = (LoginButton) v.findViewById(R.id.login_button);
-        authButton.setFragment(this);
         authButton.setReadPermissions(permissions);
+        authButton.setUserInfoChangedCallback(new LoginButton.UserInfoChangedCallback() {
+            @Override
+            public void onUserInfoFetched(GraphUser user) {
+                if (user != null) {
+                    //Toast.makeText(context,"Logged in",Toast.LENGTH_LONG).show();
+                } else {
+                    //Toast.makeText(context,"Logout successfully",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
         return v;
     }
-
 
 
 

@@ -165,28 +165,32 @@ public class PlittoFragment extends Fragment {
             //Toast.makeText(getActivity(), "Data Sent! "+result, Toast.LENGTH_LONG).show();
             try {
                 JSONArray userArray = result.getJSONArray("results");
-                Toast.makeText(getActivity(), "Number of users= " + userArray.length(), Toast.LENGTH_LONG).show();
-                for (int i = 0; i < userArray.length(); i++) {
-                    JSONObject user = (JSONObject) userArray.get(i);
-                    String username = user.getString("username");
-                    content.add(new RowInfo(1, username));
-                    JSONArray user_lists = (JSONArray) user.getJSONArray("lists");
-                    for (int j = 0; j < user_lists.length(); j++) {
-                        JSONObject user_desc = (JSONObject) user_lists.get(j);
-                        content.add(new RowInfo(2, user_desc.getString("listname")));
-                        JSONArray final_list = (JSONArray) user_desc.getJSONArray("items");
-                        for (int k = 0; k < final_list.length(); k++) {
-                            JSONObject final_elem = (JSONObject) final_list.get(k);
-                            content.add(new RowInfo(3, final_elem.getString("thingname"), final_elem.getString("added")));
+                if (userArray != null) {
+                    for (int i = 0; i < userArray.length(); i++) {
+                        JSONObject user = (JSONObject) userArray.get(i);
+                        String username = user.getString("username");
+                        content.add(new RowInfo(1, username));
+                        JSONArray user_lists = (JSONArray) user.getJSONArray("lists");
+                        for (int j = 0; j < user_lists.length(); j++) {
+                            JSONObject user_desc = (JSONObject) user_lists.get(j);
+                            content.add(new RowInfo(2, user_desc.getString("listname")));
+                            JSONArray final_list = (JSONArray) user_desc.getJSONArray("items");
+                            for (int k = 0; k < final_list.length(); k++) {
+                                JSONObject final_elem = (JSONObject) final_list.get(k);
+                                content.add(new RowInfo(3, final_elem.getString("thingname"), final_elem.getString("added")));
+                            }
                         }
-                    }
 
+                    }
+                    SimpleAdapter s = new SimpleAdapter(content, myContext.getApplicationContext());
+                    listview.setAdapter(s);
                 }
-                SimpleAdapter s = new SimpleAdapter(content, getActivity().getApplicationContext());
-                listview.setAdapter(s);
-            } catch (JSONException e) {
-                e.printStackTrace();
+
             }
+            catch(JSONException e){
+                    e.printStackTrace();
+                }
+
 
 
         }
