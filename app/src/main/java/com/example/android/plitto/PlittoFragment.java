@@ -38,6 +38,7 @@ public class PlittoFragment extends Fragment {
     List<RowInfo> content;
     HashMap<Integer, Integer> map;
     private FragmentActivity myContext;
+    private Fragment[] fragments = new Fragment[3];
 
     public PlittoFragment() {
     }
@@ -53,6 +54,7 @@ public class PlittoFragment extends Fragment {
 
     @Override
     public void onAttach(Activity activity) {
+        Log.d(TAG, "On attach");
         myContext=(FragmentActivity) activity;
         super.onAttach(activity);
     }
@@ -66,31 +68,28 @@ public class PlittoFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_item_list, container, false);
         // BG Removed - text = (TextView) rootView.findViewById(R.id.itemListTitle);
         listview = (ListView) rootView.findViewById(R.id.userlist);
-
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String myId = (String)view.getTag();
-                //Toast.makeText(getActivity(),myId,Toast.LENGTH_LONG).show();
+                android.support.v4.app.FragmentManager fm = myContext.getSupportFragmentManager();
                 if(Integer.parseInt(myId) == 0)
                 {
                     String name = content.get(i).getName();
                     UserFragment fragment = UserFragment.newInstance(name);
-                    android.support.v4.app.FragmentManager fm = myContext.getSupportFragmentManager();
                     FragmentTransaction transaction = fm.beginTransaction();
-                    transaction.show(fragment);
+                    transaction.replace(R.id.content_frame, fragment);
                     transaction.commit();
-
-                    //fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
-
                 }
 
                 else if(Integer.parseInt(myId) == 1)
                 {
                     String name = content.get(i).getName();
                     ListFragment fragment = ListFragment.newInstance(name);
-                    android.support.v4.app.FragmentManager fragmentManager = myContext.getSupportFragmentManager();
-                    fragmentManager.beginTransaction().add(R.id.content_frame, fragment).commit();
+                    FragmentTransaction transaction = fm.beginTransaction();
+                    transaction.replace(R.id.content_frame, fragment);
+                    transaction.commit();
+
 
                 }
             }
@@ -112,8 +111,6 @@ public class PlittoFragment extends Fragment {
         Log.d(TAG, "NavItem: " + i + " " + navItem);
 
         String getSomeUrl = " ";
-
-        // TODO - Build up the proper URL to call.
         // http://plitto.com/api/getSometest
         if (new String("Ditto").equals(navItem)) {
             Log.d(TAG, "You chose 'Ditto'");
@@ -140,6 +137,7 @@ public class PlittoFragment extends Fragment {
 
         @Override
         protected JSONObject doInBackground(String... urls) {
+            Log.d(TAG, "Loading in background");
             JSONObject jsonObj = null;
             ServiceHandler sh = new ServiceHandler();
             String jsonStr = sh.makeServiceCall(urls[0], ServiceHandler.GET);
@@ -161,6 +159,7 @@ public class PlittoFragment extends Fragment {
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(JSONObject result) {
+            Log.d(TAG, "Done executing");
             Log.v(TAG, "RESULT: " + result);
             //Toast.makeText(getActivity(), "Data Sent! "+result, Toast.LENGTH_LONG).show();
             try {
@@ -180,20 +179,21 @@ public class PlittoFragment extends Fragment {
                                 content.add(new RowInfo(3, final_elem.getString("thingname"), final_elem.getString("added")));
                             }
                         }
-
                     }
                     SimpleAdapter s = new SimpleAdapter(content, myContext.getApplicationContext());
                     listview.setAdapter(s);
                 }
-
             }
             catch(JSONException e){
                     e.printStackTrace();
                 }
 
-
-
         }
+    }
+
+    private void showFragment(int fragmentIndex)
+    {
+        
     }
 
 }

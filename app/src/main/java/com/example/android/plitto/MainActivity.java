@@ -8,6 +8,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import android.content.pm.Signature;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -85,6 +86,7 @@ public class MainActivity extends FragmentActivity {
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] mNavTitles;
+    private List<String> friend_list;
 
     private MainFragment mainFragment;
 
@@ -101,6 +103,7 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        friend_list = new ArrayList<String>();
 
         //
         mTitle = mDrawerTitle = getTitle();
@@ -133,8 +136,6 @@ public class MainActivity extends FragmentActivity {
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        //
-
 
         try {
             PackageInfo info =     getPackageManager().getPackageInfo("com.example.android.plitto",PackageManager.GET_SIGNATURES);
@@ -150,19 +151,14 @@ public class MainActivity extends FragmentActivity {
             e.printStackTrace();
         }
 
-
-
         if (savedInstanceState != null) {
             userSkippedLogin = savedInstanceState.getBoolean(USER_SKIPPED_LOGIN_KEY);
         }
-
         uiHelper = new UiLifecycleHelper(this, callback);
         uiHelper.onCreate(savedInstanceState);
 
-
         FragmentManager fm = getSupportFragmentManager();
         MainFragment mf = new MainFragment();
-
         fragments[SPLASH] = mf;
         fragments[SELECTION] = PlittoFragment.newInstance(0);
     }
@@ -170,7 +166,6 @@ public class MainActivity extends FragmentActivity {
 
 
     private void showFragment(int fragmentIndex, boolean addToBackStack) {
-        Log.e("Finally","In show fragments");
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         if(fragmentIndex == SPLASH)
@@ -185,9 +180,7 @@ public class MainActivity extends FragmentActivity {
             getActionBar().show();
             mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         }
-        transaction.addToBackStack(null);
         transaction.commit();
-        Log.e("Finally","Done for "+fragmentIndex);
 
     }
 
@@ -219,10 +212,8 @@ public class MainActivity extends FragmentActivity {
         // Handle action buttons
         switch (item.getItemId()) {
             case R.id.action_websearch:
-                // create intent to perform web search for this planet
                 Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
                 intent.putExtra(SearchManager.QUERY, getActionBar().getTitle());
-                // catch event that there's no activity to handle intent
                 if (intent.resolveActivity(getPackageManager()) != null) {
                     startActivity(intent);
                 } else {
@@ -239,7 +230,6 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-    /* The click listner for ListView in the navigation drawer */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -250,19 +240,15 @@ public class MainActivity extends FragmentActivity {
     private void selectItem(int position) {
 
         Log.d("Ronak", "position === " + position);
-        // update the main content by replacing fragments
         if (position < 3) {
 
             if(position ==2)
             {
                 //calling friend code here
                 requestMyAppFacebookFriends(Session.getActiveSession());
-
-                //For now see the logcat for results... I will show the list in listview tomorrow
             }
             else {
-
-                Fragment fragment2 = PlittoFragment.newInstance(position);
+                Fragment fragment2 = PlittoFragment.newInstance(0);
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.content_frame, fragment2).commit();
                 mDrawerList.setItemChecked(position, true);
@@ -281,7 +267,6 @@ public class MainActivity extends FragmentActivity {
                   Log.e("Finally","Clearing session data");
                   s.closeAndClearTokenInformation();
               }
-
             }
             else {
                 Toast.makeText(this,"ELSE button clicked",Toast.LENGTH_LONG).show();
@@ -307,11 +292,6 @@ public class MainActivity extends FragmentActivity {
         getActionBar().setTitle(mTitle);
     }
 
-    /**
-     * When using the ActionBarDrawerToggle, you must call it during
-     * onPostCreate() and onConfigurationChanged()...
-     */
-
 
 
     @Override
@@ -322,7 +302,7 @@ public class MainActivity extends FragmentActivity {
     }
 
 
-    /* REST Calls */
+
     private static String convertInputStreamToString(InputStream inputStream) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         String line = "";
@@ -343,10 +323,6 @@ public class MainActivity extends FragmentActivity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-
-    /**
-     * Fragment that appears in the "content_frame", shows a planet
-     */
     public static class PlanetFragment extends Fragment {
         public static final String ARG_PLANET_NUMBER = "planet_number";
 
@@ -360,10 +336,8 @@ public class MainActivity extends FragmentActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_planet, container, false);
             int i = getArguments().getInt(ARG_PLANET_NUMBER);
-            // BG This takes the planet name from the string. What happens next?
             String planet = getResources().getStringArray(R.array.planets_array)[i];
 
-            // This creates the file name for the planet and makes it an image.
             int imageId = getResources().getIdentifier(planet.toLowerCase(Locale.getDefault()),
                     "drawable", getActivity().getPackageName());
 
@@ -474,11 +448,21 @@ public class MainActivity extends FragmentActivity {
             public void onCompleted(Response response) {
                 List<GraphUser> friends = getResults(response);
                 Log.e("Finally",friends.toString());
+                Log.e("Friend List","Total friend = "+friends.size());
                 GraphUser friend;
+                String first_name="",last_name="";
+                friend_list.clear();
                 for(int i=0;i<friends.size();i++)
                 {
+                    Log.e("Friend List","Added");
                     friend = friends.get(i);
+                    friend_list.add(friend.toString());
                 }
+                Log.e("Friend List",friend_list.toString());
+                FriendFragment ff = new FriendFragment(friend_list);
+                FragmentManager fm = getSupportFragmentManager();
+                fm.beginTransaction().replace(R.id.content_frame,ff).commit();
+
             }
         });
         friendsRequest.executeAsync();
@@ -490,6 +474,5 @@ public class MainActivity extends FragmentActivity {
         GraphObjectList<GraphObject> data = multiResult.getData();
         return data.castToListOf(GraphUser.class);
     }
-
 
 }

@@ -64,16 +64,6 @@ public class MainFragment extends Fragment {
         View v = inflater.inflate(R.layout.splash, container,false);
         LoginButton authButton = (LoginButton) v.findViewById(R.id.login_button);
         authButton.setReadPermissions(permissions);
-        authButton.setUserInfoChangedCallback(new LoginButton.UserInfoChangedCallback() {
-            @Override
-            public void onUserInfoFetched(GraphUser user) {
-                if (user != null) {
-                    //Toast.makeText(context,"Logged in",Toast.LENGTH_LONG).show();
-                } else {
-                    //Toast.makeText(context,"Logout successfully",Toast.LENGTH_LONG).show();
-                }
-            }
-        });
         return v;
     }
 
