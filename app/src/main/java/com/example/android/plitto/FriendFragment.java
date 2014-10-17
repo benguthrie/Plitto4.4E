@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class FriendFragment extends Fragment {
 
-    private static List<String> mDataSourceList = new ArrayList<String>();;
+    private static List<FriendModel> mDataSourceList = new ArrayList<FriendModel>();;
     private List<FragmentTransaction> mBackStackList = new ArrayList<FragmentTransaction>();
     ListView friend_list;
     FragmentActivity context;
@@ -33,7 +33,7 @@ public class FriendFragment extends Fragment {
 
     }
 
-    public FriendFragment(List<String> data)
+    public FriendFragment(List<FriendModel> data)
     {
 
         mDataSourceList.addAll(data);
@@ -44,15 +44,19 @@ public class FriendFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.list_friends, container, false);
         friend_list = (ListView) v.findViewById(R.id.list);
+        FriendAdapter fa = new FriendAdapter(mDataSourceList,context);
+        friend_list.setAdapter(fa);
 
-        friend_list.setAdapter(new ArrayAdapter(context, android.R.layout.simple_list_item_1, mDataSourceList));
+        //friend_list.setAdapter(new ArrayAdapter(context, android.R.layout.simple_list_item_1, mDataSourceList));
 
+/*
         friend_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(context,"Item "+i+" clicked",Toast.LENGTH_SHORT).show();
             }
         });
+*/
 
         return v;
     }

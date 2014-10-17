@@ -4,19 +4,24 @@ package com.example.android.plitto;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import android.app.ProgressDialog;
 import android.content.pm.Signature;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
 import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.app.SearchManager;
@@ -44,6 +49,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.util.Log;
 
+import com.facebook.LoginActivity;
 import com.facebook.Response;
 import com.facebook.Session;
 import com.facebook.SessionState;
@@ -63,7 +69,14 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 public class MainActivity extends FragmentActivity {
 
@@ -104,6 +117,9 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         friend_list = new ArrayList<String>();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
 
         //
         mTitle = mDrawerTitle = getTitle();
@@ -246,6 +262,9 @@ public class MainActivity extends FragmentActivity {
             {
                 //calling friend code here
                 requestMyAppFacebookFriends(Session.getActiveSession());
+                mDrawerList.setItemChecked(position, true);
+                setTitle(mNavTitles[position]);
+                mDrawerLayout.closeDrawer(mDrawerList);
             }
             else {
                 Fragment fragment2 = PlittoFragment.newInstance(0);
@@ -429,8 +448,7 @@ public class MainActivity extends FragmentActivity {
         Request request = Request.newGraphPathRequest(session, "me/friends", null);
 
         Set<String> fields = new HashSet<String>();
-        String[] requiredFields = new String[] { "id", "name", "picture",
-                "installed" };
+        String[] requiredFields = new String[] { "id", "name", "picture","installed","first_name","last_name" };
         fields.addAll(Arrays.asList(requiredFields));
 
         Bundle parameters;
@@ -441,6 +459,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void requestMyAppFacebookFriends(Session session) {
+        final List<String> friend_id=new ArrayList<String>();
         Request friendsRequest = createRequest(session);
         friendsRequest.setCallback(new Request.Callback() {
 
@@ -456,12 +475,10 @@ public class MainActivity extends FragmentActivity {
                 {
                     Log.e("Friend List","Added");
                     friend = friends.get(i);
-                    friend_list.add(friend.toString());
+                    friend_id.add(friend.getId());
                 }
-                Log.e("Friend List",friend_list.toString());
-                FriendFragment ff = new FriendFragment(friend_list);
-                FragmentManager fm = getSupportFragmentManager();
-                fm.beginTransaction().replace(R.id.content_frame,ff).commit();
+
+                new Friend_Data().execute(friend_id);
 
             }
         });
@@ -473,6 +490,142 @@ public class MainActivity extends FragmentActivity {
                 .getGraphObjectAs(GraphMultiResult.class);
         GraphObjectList<GraphObject> data = multiResult.getData();
         return data.castToListOf(GraphUser.class);
+    }
+
+
+    private String POST(List<String> id){
+        InputStream inputStream = null;
+        String url="http://www.plitto.com/api/fbfriendstest";
+
+        String result = "";
+        try {
+
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httpPost = new HttpPost(url);
+            JSONArray mJSONArray = new JSONArray(Arrays.asList(id));
+            String json = "";
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("Id",mJSONArray);
+            json = jsonObject.toString();
+            StringEntity se = new StringEntity(json);
+            httpPost.setEntity(se);
+            httpPost.setHeader("Accept", "application/json");
+            httpPost.setHeader("Content-type", "application/json");
+            HttpResponse httpResponse = httpclient.execute(httpPost);
+            inputStream = httpResponse.getEntity().getContent();
+            if(inputStream != null) {
+                result = convertInputStreamToString(inputStream);
+                Log.e("RESULT ==", result);
+            }
+            else
+                result = "Did not work!";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+
+
+
+    class Friend_Data extends AsyncTask<List<String>, Void, String> {
+
+        private Exception exception;
+        ProgressDialog pDialog;
+
+            @Override
+            protected void onPreExecute(){
+                pDialog = new ProgressDialog(MainActivity.this);
+                pDialog.setMessage("Getting interesting data...");
+                pDialog.show();
+
+
+            }
+
+
+            protected String doInBackground(List<String>... urls) {
+            List<String> id = urls[0];
+            InputStream inputStream = null;
+            String url="http://www.plitto.com/api/fbfriendstest";
+
+            String result = "";
+            try {
+
+                HttpClient httpclient = new DefaultHttpClient();
+                HttpPost httpPost = new HttpPost(url);
+                JSONArray mJSONArray = new JSONArray(Arrays.asList(id));
+                String json = "";
+
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("Id",mJSONArray);
+                json = jsonObject.toString();
+                StringEntity se = new StringEntity(json);
+                httpPost.setEntity(se);
+                httpPost.setHeader("Accept", "application/json");
+                httpPost.setHeader("Content-type", "application/json");
+                HttpResponse httpResponse = httpclient.execute(httpPost);
+                inputStream = httpResponse.getEntity().getContent();
+                if(inputStream != null) {
+                    result = convertInputStreamToString(inputStream);
+                    Log.e("RESULT ==", result);
+                }
+                else
+                    result = "Did not work!";
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+
+        protected void onPostExecute(final String result) {
+            super.onPostExecute(result);
+            JSONObject obj=null;
+            List<FriendModel> friend_list = new ArrayList<FriendModel>();
+            try {
+                obj = new JSONObject(result);
+                Log.d("MyApp", obj.toString());
+            } catch (Throwable t) {
+                Log.e("MyApp", "Could not parse malformed JSON: \"" + result + "\"");
+            }
+            if(obj !=null) {
+                try {
+                    FriendModel fm;
+                    JSONObject temp;
+                    JSONArray results = obj.getJSONArray("result");
+                    for(int i=0;i<results.length();i++){
+                        temp = results.getJSONObject(i);
+                        fm = new FriendModel();
+                        fm.setId(temp.getString("id"));
+                        fm.setName(temp.getString("name"));
+                        fm.setFbuid(temp.getString("fbuid"));
+                        fm.setThings(temp.getString("things"));
+                        fm.setShared(temp.getString("shared"));
+                        fm.setDittoable(temp.getString("dittoable"));
+                        fm.setLists(temp.getString("lists"));
+                        fm.setSharedlists(temp.getString("sharedlists"));
+                        friend_list.add(fm);
+                    }
+
+                    }
+                catch ( JSONException e){
+                    e.printStackTrace();
+                }
+
+            }
+            pDialog.dismiss();
+
+
+
+            FriendFragment ff = new FriendFragment(friend_list);
+            FragmentManager fm = getSupportFragmentManager();
+            fm.beginTransaction().replace(R.id.content_frame,ff).commit();
+
+        }
     }
 
 }
