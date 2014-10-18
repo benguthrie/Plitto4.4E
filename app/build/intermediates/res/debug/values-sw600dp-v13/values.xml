@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <!-- From: file:/home/batman/projects/android/Plitto4.4E/app/src/main/res/values-sw600dp/refs.xml -->
-    <eat-comment />
-
-    <item name="fragment_ditto_some" type="layout">@layout/fragment_item_grid</item>
-
-</resources>

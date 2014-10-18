@@ -26,18 +26,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.example.android.plitto" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da7c5ca7-d06d-4aed-812b-e01832cc200b" name="Default" comment="Updated some styling elements">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="MOVED" beforePath="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\list_line.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_list_main.xml" />
-      <change type="MOVED" beforePath="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\src\main\res\layout\user_line.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/plitto/ListFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/plitto/ListFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/example/android/plitto/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/example/android/plitto/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/plitto/UserFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/plitto/UserFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="da7c5ca7-d06d-4aed-812b-e01832cc200b" name="Default" comment="Added elements within the List and User areas." />
     <ignored path="NavigationDrawer.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -95,8 +84,8 @@
       <file leaf-file-name="fragment_user_main.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_user_main.xml">
           <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="409" max-vertical-offset="1701">
-              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="430" max-vertical-offset="1722">
+              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -108,8 +97,8 @@
       <file leaf-file-name="fragment_list_main.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_list_main.xml">
           <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2184">
-              <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2142">
+              <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -1269,8 +1258,8 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/row_user.xml" />
         <option value="$PROJECT_DIR$/app/build/generated/source/r/debug/com/example/android/plitto/R.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_list_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_list_main.xml" />
       </list>
     </option>
   </component>
@@ -1764,7 +1753,11 @@
       <created>1413138574670</created>
       <updated>1413138574670</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added elements within the List and User areas.">
+      <created>1413173190604</created>
+      <updated>1413173190605</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1819,7 +1812,8 @@
     <MESSAGE value="Data is being collected, but needs to be configured to update the item_list&#10;" />
     <MESSAGE value="Ronak's code that builds the &quot;Ditto&quot; view is merged.&#10;&#10;Application renamed from the navigationdrawersample to com.plitto.android.example." />
     <MESSAGE value="Updated some styling elements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated some styling elements" />
+    <MESSAGE value="Added elements within the List and User areas." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added elements within the List and User areas." />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -2168,8 +2162,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_user_main.xml">
       <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="409" max-vertical-offset="1701">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="430" max-vertical-offset="1722">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2190,8 +2184,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_list_main.xml">
       <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2037">
-          <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2142">
+          <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
           <folding />
         </state>
       </provider>
