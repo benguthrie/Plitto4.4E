@@ -72,6 +72,14 @@ public class FriendFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
+    @Override
+    public void onDestroy() {
+        // Remove adapter refference from list
+        friend_list.setAdapter(null);
+        super.onDestroy();
+
+    }
+
     /*
     public static void set_friend_list(List<String> data)
     {

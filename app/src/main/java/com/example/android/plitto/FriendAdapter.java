@@ -30,40 +30,69 @@ public class FriendAdapter extends ArrayAdapter<FriendModel> {
 
     private List<FriendModel> itemList;
     private Context ctx;
+    public ImageLoader imageLoader;
 
     public FriendAdapter(List<FriendModel> itemList, Context ctx) {
         super(ctx, android.R.layout.simple_expandable_list_item_1, itemList);
         this.itemList = itemList;
         this.ctx = ctx;
+        imageLoader = new ImageLoader(ctx);
+    }
+
+    public int getCount() {
+        return itemList.size();
+    }
+
+    public FriendModel getItem(int position) {
+        return itemList.get(position);
+    }
+
+    public long getItemId(int position) {
+        return position;
+    }
+
+
+    /********* Create a holder Class to contain inflated xml file elements *********/
+    public static class ViewHolder{
+
+        public TextView name;
+        public TextView left;
+        public TextView right;
+        public ImageView profile_pic;
+
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
+        ViewHolder holder;
         if (v == null) {
             // Inflate the layout according to the view type
             LayoutInflater inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                v = inflater.inflate(R.layout.friend_layout, parent, false);
+            v = inflater.inflate(R.layout.friend_layout, parent, false);
+            holder = new ViewHolder();
+            holder.name = (TextView) v.findViewById(R.id.name);
+            holder.left=(TextView)v.findViewById(R.id.left_text);
+            holder.right=(TextView)v.findViewById(R.id.right_text);
+            holder.profile_pic=(ImageView)v.findViewById(R.id.profile_pic);
 
+            v.setTag( holder );
         }
+        else
+            holder=(ViewHolder)v.getTag();
+
         FriendModel c = itemList.get(position);
         String id = c.getFbuid();
-        TextView txt = (TextView) v.findViewById(R.id.name);
-        TextView left = (TextView) v.findViewById(R.id.left_text);
-        TextView right = (TextView) v.findViewById(R.id.right_text);
-        ImageView profile_pic = (ImageView) v.findViewById(R.id.profile_pic);
-        Drawable profile_drawable = LoadImageFromWebOperations(id);
-        profile_pic.setImageDrawable(profile_drawable);
-        txt.setText(c.getName());
-        txt.setTextSize(17);
-        left.setText(c.getShared());
-        right.setText(c.getDittoable());
+        holder.name.setText(c.getName());
+        holder.left.setText(c.getShared());
+        holder.right.setText(c.getDittoable());
+        ImageView image = holder.profile_pic;
+        imageLoader.DisplayImage("https://graph.facebook.com/"+id+"/picture/", image);
         return v;
     }
 
    public Drawable LoadImageFromWebOperations(String id) {
         String url = "http://graph.facebook.com/"+id+"/picture";
-        Log.e("QQURL",url);
         try {
             InputStream is = (InputStream) new URL(url).getContent();
             Drawable d = Drawable.createFromStream(is, "src name");

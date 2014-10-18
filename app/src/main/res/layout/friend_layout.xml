@@ -11,9 +11,10 @@
         android:weightSum="100">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_weight="30"
+            android:scaleType="fitStart"
             android:id="@+id/profile_pic"/>
         <TextView
             android:layout_width="wrap_content"
