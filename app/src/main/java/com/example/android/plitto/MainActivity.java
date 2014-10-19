@@ -549,7 +549,7 @@ public class MainActivity extends FragmentActivity {
             protected String doInBackground(List<String>... urls) {
             List<String> id = urls[0];
             InputStream inputStream = null;
-            String url="http://www.plitto.com/api/fbfriendstest";
+            String url="http://www.plitto.com/api/2.0/  fbfriendstest";
 
             String result = "";
             try {

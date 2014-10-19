@@ -32,7 +32,7 @@ public class PlittoFragment extends Fragment {
 
     public static final String ARG_NAV_NUMBER = "nav_number";
     public static final String TAG = PlittoFragment.class.getSimpleName();
-    private String url = "http://www.plitto.com/api/getSometest";
+    private String url = "http://www.plitto.com/api/2.0/getSometest";
     TextView text;
     ListView listview;
     List<RowInfo> content;
@@ -114,16 +114,16 @@ public class PlittoFragment extends Fragment {
         // http://plitto.com/api/getSometest
         if (new String("Ditto").equals(navItem)) {
             Log.d(TAG, "You chose 'Ditto'");
-            getSomeUrl = "http://www.plitto.com/api/getSometest";
+            getSomeUrl = "http://www.plitto.com/api/2.0/getSometest";
         } else if (new String("Friends").equals(navItem)) {
             Log.d(TAG, "You chose 'Friends'");
-            getSomeUrl = "http://www.plitto.com/api/friends";
+            getSomeUrl = "http://www.plitto.com/api/2.0/friends";
         } else if (new String("Search").equals(navItem)) {
             Log.d(TAG, "You chose 'Search'");
-            getSomeUrl = "http://www.plitto.com/api/search";
+            getSomeUrl = "http://www.plitto.com/api/2.0/search";
         } else {
             Log.d(TAG, "You chose something other than 'Ditto'" + navItem);
-            getSomeUrl = "http://www.plitto.com/api/getSometest";
+            getSomeUrl = "http://www.plitto.com/api/2/0/getSometest";
         }
         Log.d(TAG, "URL To Call " + getSomeUrl);
         // TODO Make the API call
