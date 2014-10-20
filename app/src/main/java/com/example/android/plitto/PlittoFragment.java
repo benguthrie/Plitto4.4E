@@ -162,6 +162,9 @@ public class PlittoFragment extends Fragment {
             Log.d(TAG, "Done executing");
             Log.v(TAG, "RESULT: " + result);
             //Toast.makeText(getActivity(), "Data Sent! "+result, Toast.LENGTH_LONG).show();
+
+            if(result!=null)
+
             try {
                 JSONArray userArray = result.getJSONArray("results");
                 if (userArray != null) {

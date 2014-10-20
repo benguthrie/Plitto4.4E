@@ -9,6 +9,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.pm.Signature;
 
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ import java.util.Locale;
 import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -116,12 +119,6 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        friend_list = new ArrayList<String>();
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-
-        //
         mTitle = mDrawerTitle = getTitle();
         mNavTitles = getResources().getStringArray(R.array.nav_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -138,8 +135,7 @@ public class MainActivity extends FragmentActivity {
                 R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */
                 R.string.drawer_open,  /* "open drawer" description for accessibility */
                 R.string.drawer_close  /* "close drawer" description for accessibility */
-        )
-        {
+        ) {
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
@@ -153,30 +149,44 @@ public class MainActivity extends FragmentActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 
-        try {
-            PackageInfo info =     getPackageManager().getPackageInfo("com.example.android.plitto",PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                String sign= Base64.encodeToString(md.digest(), Base64.DEFAULT);
-                Log.e("HASH", sign);
+
+        if(isConnectedToInternet()) {
+            Log.e("Ronak","In IFF");
+            friend_list = new ArrayList<String>();
+            try {
+                PackageInfo info = getPackageManager().getPackageInfo("com.example.android.plitto", PackageManager.GET_SIGNATURES);
+                for (Signature signature : info.signatures) {
+                    MessageDigest md = MessageDigest.getInstance("SHA");
+                    md.update(signature.toByteArray());
+                    String sign = Base64.encodeToString(md.digest(), Base64.DEFAULT);
+                    Log.e("HASH", sign);
+                }
+            } catch (NoSuchAlgorithmException e) {
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
             }
-        }
-        catch (NoSuchAlgorithmException e) {
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+
+            if (savedInstanceState != null) {
+                userSkippedLogin = savedInstanceState.getBoolean(USER_SKIPPED_LOGIN_KEY);
+            }
+            uiHelper = new UiLifecycleHelper(this, callback);
+            uiHelper.onCreate(savedInstanceState);
+
+            FragmentManager fm = getSupportFragmentManager();
+            MainFragment mf = new MainFragment();
+            fragments[SPLASH] = mf;
+            fragments[SELECTION] = PlittoFragment.newInstance(0);
         }
 
-        if (savedInstanceState != null) {
-            userSkippedLogin = savedInstanceState.getBoolean(USER_SKIPPED_LOGIN_KEY);
+        else
+        {
+            Log.e("Ronak","In else");
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction transaction = fm.beginTransaction();
+            transaction.replace(R.id.content_frame, new NoInternetFragment()).commit();
+            getActionBar().hide();
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         }
-        uiHelper = new UiLifecycleHelper(this, callback);
-        uiHelper.onCreate(savedInstanceState);
-
-        FragmentManager fm = getSupportFragmentManager();
-        MainFragment mf = new MainFragment();
-        fragments[SPLASH] = mf;
-        fragments[SELECTION] = PlittoFragment.newInstance(0);
     }
 
 
@@ -213,8 +223,10 @@ public class MainActivity extends FragmentActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // If the nav drawer is open, hide action items related to the content view
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
-        menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
+        if(mDrawerLayout !=null) {
+            boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerList);
+            menu.findItem(R.id.action_websearch).setVisible(!drawerOpen);
+        }
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -222,24 +234,30 @@ public class MainActivity extends FragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // The action bar home/up action should open or close the drawer.
         // ActionBarDrawerToggle will take care of this.
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
+
+
+        if (mDrawerToggle!=null && mDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         // Handle action buttons
         switch (item.getItemId()) {
             case R.id.action_websearch:
-                Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
-                intent.putExtra(SearchManager.QUERY, getActionBar().getTitle());
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(this, R.string.app_not_available, Toast.LENGTH_LONG).show();
+                if(isConnectedToInternet()) {
+                    Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+                    intent.putExtra(SearchManager.QUERY, getActionBar().getTitle());
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(this, R.string.app_not_available, Toast.LENGTH_LONG).show();
+                    }
                 }
                 return true;
             case R.id.action_refresh:
-                Fragment fragment2 = PlittoFragment.newInstance(0);
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment2).commit();
+                if(isConnectedToInternet()) {
+                    Fragment fragment2 = PlittoFragment.newInstance(0);
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment2).commit();
+                }
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -256,51 +274,52 @@ public class MainActivity extends FragmentActivity {
     private void selectItem(int position) {
 
         Log.d("Ronak", "position === " + position);
-        if (position < 3) {
 
-            if(position ==2)
-            {
-                //calling friend code here
-                requestMyAppFacebookFriends(Session.getActiveSession());
-                mDrawerList.setItemChecked(position, true);
-                setTitle(mNavTitles[position]);
-                mDrawerLayout.closeDrawer(mDrawerList);
-            }
-            else {
-                Fragment fragment2 = PlittoFragment.newInstance(0);
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment2).commit();
-                mDrawerList.setItemChecked(position, true);
-                setTitle(mNavTitles[position]);
-                mDrawerLayout.closeDrawer(mDrawerList);
-            }
-        }
-        else
-        {
-            if(position == 6)
-            {
-             Toast.makeText(this,"Logout button clicked",Toast.LENGTH_LONG).show();
-              Session s = Session.getActiveSession();
-              if(s!=null)
-              {
-                  Log.e("Finally","Clearing session data");
-                  s.closeAndClearTokenInformation();
-              }
-            }
-            else {
-                Toast.makeText(this,"ELSE button clicked",Toast.LENGTH_LONG).show();
-                Fragment fragment = new PlanetFragment();
-                Bundle args = new Bundle();
-                args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
-                fragment.setArguments(args);
+        if(mDrawerList!=null && mDrawerLayout!=null) {
 
-                FragmentManager fragmentManager2 = getSupportFragmentManager();
-                fragmentManager2.beginTransaction().replace(R.id.content_frame, fragment).commit();
 
-                // update selected item and title, then close the drawer
-                mDrawerList.setItemChecked(position, true);
-                setTitle(mNavTitles[position]);
-                mDrawerLayout.closeDrawer(mDrawerList);
+            if (position < 3) {
+
+                if (position == 2) {
+                    //calling friend code here
+
+                    requestMyAppFacebookFriends(Session.getActiveSession());
+                    mDrawerList.setItemChecked(position, true);
+                    setTitle(mNavTitles[position]);
+                    mDrawerLayout.closeDrawer(mDrawerList);
+
+                } else {
+
+                    Fragment fragment2 = PlittoFragment.newInstance(0);
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment2).commit();
+                    mDrawerList.setItemChecked(position, true);
+                    setTitle(mNavTitles[position]);
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                }
+            } else {
+                if (position == 6) {
+                    Toast.makeText(this, "Logout button clicked", Toast.LENGTH_LONG).show();
+                    Session s = Session.getActiveSession();
+                    if (s != null) {
+                        Log.e("Finally", "Clearing session data");
+                        s.closeAndClearTokenInformation();
+                    }
+                } else {
+                    Toast.makeText(this, "ELSE button clicked", Toast.LENGTH_LONG).show();
+                    Fragment fragment = new PlanetFragment();
+                    Bundle args = new Bundle();
+                    args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
+                    fragment.setArguments(args);
+
+                    FragmentManager fragmentManager2 = getSupportFragmentManager();
+                    fragmentManager2.beginTransaction().replace(R.id.content_frame, fragment).commit();
+
+                    // update selected item and title, then close the drawer
+                    mDrawerList.setItemChecked(position, true);
+                    setTitle(mNavTitles[position]);
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                }
             }
         }
     }
@@ -317,7 +336,8 @@ public class MainActivity extends FragmentActivity {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
-        mDrawerToggle.syncState();
+        if(mDrawerToggle!=null)
+            mDrawerToggle.syncState();
     }
 
 
@@ -337,9 +357,11 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
+
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
-        mDrawerToggle.onConfigurationChanged(newConfig);
+        if(mDrawerToggle !=null)
+            mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
     public static class PlanetFragment extends Fragment {
@@ -369,22 +391,24 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-
-
-
     @Override
     protected void onResumeFragments() {
         super.onResumeFragments();
-        Session session = Session.getActiveSession();
 
-        if (session != null && session.isOpened()) {
-            // if the session is already open, try to show the selection fragment
-            showFragment(SELECTION, false);
+        if(isConnectedToInternet()) {
+            Session session = Session.getActiveSession();
+
+            if (session != null && session.isOpened()) {
+                showFragment(SELECTION, false);
+            } else {
+                // otherwise present the splash screen and ask the user to login, unless the user explicitly skipped.
+
+                showFragment(SPLASH, false);
+            }
         }
         else
         {
-            // otherwise present the splash screen and ask the user to login, unless the user explicitly skipped.
-            showFragment(SPLASH, false);
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new NoInternetFragment()).commit();
         }
     }
 
@@ -392,7 +416,8 @@ public class MainActivity extends FragmentActivity {
     @Override
     public void onResume() {
         super.onResume();
-        uiHelper.onResume();
+        if(uiHelper!=null)
+            uiHelper.onResume();
         isResumed = true;
 
     }
@@ -465,31 +490,40 @@ public class MainActivity extends FragmentActivity {
 
             @Override
             public void onCompleted(Response response) {
-                List<GraphUser> friends = getResults(response);
-                Log.e("Finally",friends.toString());
-                Log.e("Friend List","Total friend = "+friends.size());
-                GraphUser friend;
-                String first_name="",last_name="";
-                friend_list.clear();
-                for(int i=0;i<friends.size();i++)
-                {
-                    Log.e("Friend List","Added");
-                    friend = friends.get(i);
-                    friend_id.add(friend.getId());
+                if (response != null) {
+                    List<GraphUser> friends = getResults(response);
+                    if(friends==null)
+                        return;
+
+                    Log.e("Finally", friends.toString());
+                    Log.e("Friend List", "Total friend = " + friends.size());
+                    GraphUser friend;
+                    String first_name = "", last_name = "";
+                    friend_list.clear();
+                    for (int i = 0; i < friends.size(); i++) {
+                        Log.e("Friend List", "Added");
+                        friend = friends.get(i);
+                        friend_id.add(friend.getId());
+                    }
+
+                    new Friend_Data().execute(friend_id);
+
                 }
-
-                new Friend_Data().execute(friend_id);
-
             }
         });
         friendsRequest.executeAsync();
+
     }
 
     private List<GraphUser> getResults(Response response) {
         GraphMultiResult multiResult = response
                 .getGraphObjectAs(GraphMultiResult.class);
-        GraphObjectList<GraphObject> data = multiResult.getData();
-        return data.castToListOf(GraphUser.class);
+        if(multiResult!=null) {
+            GraphObjectList<GraphObject> data = multiResult.getData();
+            return data.castToListOf(GraphUser.class);
+        }
+        else
+            return null;
     }
 
 
@@ -528,9 +562,6 @@ public class MainActivity extends FragmentActivity {
     }
 
 
-
-
-
     class Friend_Data extends AsyncTask<List<String>, Void, String> {
 
         private Exception exception;
@@ -549,7 +580,7 @@ public class MainActivity extends FragmentActivity {
             protected String doInBackground(List<String>... urls) {
             List<String> id = urls[0];
             InputStream inputStream = null;
-            String url="http://www.plitto.com/api/2.0/  fbfriendstest";
+            String url="http://www.plitto.com/api/2.0/fbfriendstest";
 
             String result = "";
             try {
@@ -584,48 +615,65 @@ public class MainActivity extends FragmentActivity {
 
         protected void onPostExecute(final String result) {
             super.onPostExecute(result);
-            JSONObject obj=null;
-            List<FriendModel> friend_list = new ArrayList<FriendModel>();
-            try {
-                obj = new JSONObject(result);
-                Log.d("MyApp", obj.toString());
-            } catch (Throwable t) {
-                Log.e("MyApp", "Could not parse malformed JSON: \"" + result + "\"");
-            }
-            if(obj !=null) {
+            if(result!=null) {
+                JSONObject obj = null;
+                List<FriendModel> friend_list = new ArrayList<FriendModel>();
                 try {
-                    FriendModel fm;
-                    JSONObject temp;
-                    JSONArray results = obj.getJSONArray("result");
-                    for(int i=0;i<results.length();i++){
-                        temp = results.getJSONObject(i);
-                        fm = new FriendModel();
-                        fm.setId(temp.getString("id"));
-                        fm.setName(temp.getString("name"));
-                        fm.setFbuid(temp.getString("fbuid"));
-                        fm.setThings(temp.getString("things"));
-                        fm.setShared(temp.getString("shared"));
-                        fm.setDittoable(temp.getString("dittoable"));
-                        fm.setLists(temp.getString("lists"));
-                        fm.setSharedlists(temp.getString("sharedlists"));
-                        friend_list.add(fm);
-                    }
-
-                    }
-                catch ( JSONException e){
-                    e.printStackTrace();
+                    obj = new JSONObject(result);
+                    Log.d("MyApp", obj.toString());
+                } catch (Throwable t) {
+                    Log.e("MyApp", "Could not parse malformed JSON: \"" + result + "\"");
                 }
+                if (obj != null) {
+                    try {
+                        FriendModel fm;
+                        JSONObject temp;
+                        JSONArray results = obj.getJSONArray("result");
+                        for (int i = 0; i < results.length(); i++) {
+                            temp = results.getJSONObject(i);
+                            fm = new FriendModel();
+                            fm.setId(temp.getString("id"));
+                            fm.setName(temp.getString("name"));
+                            fm.setFbuid(temp.getString("fbuid"));
+                            fm.setThings(temp.getString("things"));
+                            fm.setShared(temp.getString("shared"));
+                            fm.setDittoable(temp.getString("dittoable"));
+                            fm.setLists(temp.getString("lists"));
+                            fm.setSharedlists(temp.getString("sharedlists"));
+                            friend_list.add(fm);
+                        }
 
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                pDialog.dismiss();
+
+
+                FriendFragment ff = new FriendFragment(friend_list);
+                FragmentManager fm = getSupportFragmentManager();
+                fm.beginTransaction().replace(R.id.content_frame, ff).commit();
             }
-            pDialog.dismiss();
-
-
-
-            FriendFragment ff = new FriendFragment(friend_list);
-            FragmentManager fm = getSupportFragmentManager();
-            fm.beginTransaction().replace(R.id.content_frame,ff).commit();
 
         }
+    }
+
+
+    public boolean isConnectedToInternet(){
+        ConnectivityManager connectivity = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity != null)
+        {
+            NetworkInfo[] info = connectivity.getAllNetworkInfo();
+            if (info != null)
+                for (int i = 0; i < info.length; i++)
+                    if (info[i].getState() == NetworkInfo.State.CONNECTED)
+                    {
+                        return true;
+                    }
+
+        }
+        return false;
     }
 
 }
