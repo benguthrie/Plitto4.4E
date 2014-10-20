@@ -2,6 +2,7 @@ package com.example.android.plitto;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,11 @@ import android.widget.TextView;
  * Created by batman on 12/10/14.
  */
 public class UserFragment extends Fragment {
+
+    static final int NUM_ITEMS = 4;
+    private ViewPager mPager;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

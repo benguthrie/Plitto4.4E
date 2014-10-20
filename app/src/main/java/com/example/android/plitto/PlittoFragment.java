@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -32,19 +33,14 @@ public class PlittoFragment extends Fragment {
 
     public static final String ARG_NAV_NUMBER = "nav_number";
     public static final String TAG = PlittoFragment.class.getSimpleName();
-    private String url = "http://www.plitto.com/api/2.0/getSometest";
-    TextView text;
     ListView listview;
     List<RowInfo> content;
-    HashMap<Integer, Integer> map;
     private FragmentActivity myContext;
-    private Fragment[] fragments = new Fragment[3];
 
     public PlittoFragment() {
     }
 
     public static PlittoFragment newInstance(int position) {
-        Log.d(TAG, "On new instance");
         PlittoFragment fragment = new PlittoFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_NAV_NUMBER, position);
@@ -54,7 +50,6 @@ public class PlittoFragment extends Fragment {
 
     @Override
     public void onAttach(Activity activity) {
-        Log.d(TAG, "On attach");
         myContext=(FragmentActivity) activity;
         super.onAttach(activity);
     }
@@ -64,7 +59,6 @@ public class PlittoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d(TAG, "On create view");
         View rootView = inflater.inflate(R.layout.fragment_item_list, container, false);
         // BG Removed - text = (TextView) rootView.findViewById(R.id.itemListTitle);
         listview = (ListView) rootView.findViewById(R.id.userlist);
@@ -100,28 +94,26 @@ public class PlittoFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.d(TAG, "On activity created");
 
 // This sets the view to be the fragment_item_list
         int i = getArguments().getInt(ARG_NAV_NUMBER);
         // BG This takes the nav item name from the string.
         String navItem = getResources().getStringArray(R.array.nav_array)[i];
-        Log.d(TAG, "NavItem: " + i + " " + navItem);
 
         String getSomeUrl = " ";
         // http://plitto.com/api/getSometest
         if (new String("Ditto").equals(navItem)) {
             Log.d(TAG, "You chose 'Ditto'");
-            getSomeUrl = "http://www.plitto.com/api/2.0/getSometest";
+            getSomeUrl = "http://www.plitto.com/api/2.0/getsometestrich";
         } else if (new String("Friends").equals(navItem)) {
             Log.d(TAG, "You chose 'Friends'");
-            getSomeUrl = "http://www.plitto.com/api/2.0/friends";
+            getSomeUrl = "http://www.plitto.com/api/2.0/getsometestrich";
         } else if (new String("Search").equals(navItem)) {
             Log.d(TAG, "You chose 'Search'");
-            getSomeUrl = "http://www.plitto.com/api/2.0/search";
+            getSomeUrl = "http://www.plitto.com/api/2.0/getsometestrich";
         } else {
             Log.d(TAG, "You chose something other than 'Ditto'" + navItem);
-            getSomeUrl = "http://www.plitto.com/api/2/0/getSometest";
+            getSomeUrl = "http://www.plitto.com/api/2.0/getsometestrich";
         }
         Log.d(TAG, "URL To Call " + getSomeUrl);
         // TODO Make the API call
@@ -133,13 +125,23 @@ public class PlittoFragment extends Fragment {
 
     public class HttpAsyncTask extends AsyncTask<String, String, JSONObject> {
 
+
+        private Exception exception;
+        ProgressDialog pDialog;
+
+        @Override
+        protected void onPreExecute(){
+            pDialog = new ProgressDialog(myContext);
+            pDialog.setMessage("Loading plitto data...");
+            pDialog.show();
+        }
+
+
         @Override
         protected JSONObject doInBackground(String... urls) {
-            Log.d(TAG, "Loading in background");
             JSONObject jsonObj = null;
             ServiceHandler sh = new ServiceHandler();
             String jsonStr = sh.makeServiceCall(urls[0], ServiceHandler.GET);
-            Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
                     jsonObj = new JSONObject(jsonStr);
@@ -157,38 +159,60 @@ public class PlittoFragment extends Fragment {
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(JSONObject result) {
-            Log.d(TAG, "Done executing");
-            Log.v(TAG, "RESULT: " + result);
             //Toast.makeText(getActivity(), "Data Sent! "+result, Toast.LENGTH_LONG).show();
-
             if(result!=null)
 
             try {
                 JSONArray userArray = result.getJSONArray("results");
                 if (userArray != null) {
                     for (int i = 0; i < userArray.length(); i++) {
-                        JSONObject user = (JSONObject) userArray.get(i);
-                        String username = user.getString("username");
-                        content.add(new RowInfo(1, username));
-                        JSONArray user_lists = (JSONArray) user.getJSONArray("lists");
-                        for (int j = 0; j < user_lists.length(); j++) {
-                            JSONObject user_desc = (JSONObject) user_lists.get(j);
-                            content.add(new RowInfo(2, user_desc.getString("listname")));
-                            JSONArray final_list = (JSONArray) user_desc.getJSONArray("items");
-                            for (int k = 0; k < final_list.length(); k++) {
-                                JSONObject final_elem = (JSONObject) final_list.get(k);
-                                content.add(new RowInfo(3, final_elem.getString("thingname"), final_elem.getString("added")));
+                        if (userArray.get(i) instanceof JSONObject) {
+                            JSONObject user = userArray.getJSONObject(i);
+                            String username = user.getString("username");
+                            content.add(new RowInfo(1, username,"","",user.getString("fbuid")));
+                            JSONArray user_lists = (JSONArray) user.getJSONArray("lists");
+                            for (int j = 0; j < user_lists.length(); j++) {
+                                JSONObject user_desc = (JSONObject) user_lists.get(j);
+                                content.add(new RowInfo(2, user_desc.getString("listname"),"","",user_desc.getString("lid")));
+                                JSONArray final_list = (JSONArray) user_desc.getJSONArray("items");
+                                for (int k = 0; k < final_list.length(); k++) {
+                                    JSONObject final_elem = (JSONObject) final_list.get(k);
+                                    content.add(new RowInfo(3, final_elem.getString("thingname"), final_elem.getString("added"), final_elem.getString("mykey"),final_elem.getString("tid")));
+                                }
                             }
                         }
+
+                        else if(userArray.get(i) instanceof JSONArray) {
+                            JSONArray kk = userArray.getJSONArray(i);
+                            for(int l=0;l<kk.length();l++) {
+                                JSONObject user = kk.getJSONObject(l);
+                                String username = user.getString("username");
+                                content.add(new RowInfo(1, username,"","",user.getString("fbuid")));
+                                JSONArray user_lists = (JSONArray) user.getJSONArray("lists");
+                                for (int j = 0; j < user_lists.length(); j++) {
+                                    JSONObject user_desc = (JSONObject) user_lists.get(j);
+                                    content.add(new RowInfo(2, user_desc.getString("listname"),"","",user_desc.getString("lid")));
+                                    JSONArray final_list = (JSONArray) user_desc.getJSONArray("items");
+                                    for (int k = 0; k < final_list.length(); k++) {
+                                        JSONObject final_elem = (JSONObject) final_list.get(k);
+                                        content.add(new RowInfo(3, final_elem.getString("thingname"), final_elem.getString("added"), final_elem.getString("mykey"),final_elem.getString("tid")));
+                                    }
+                                }
+
+                            }
+
+
+                        }
                     }
-                    SimpleAdapter s = new SimpleAdapter(content, myContext.getApplicationContext());
-                    listview.setAdapter(s);
+
                 }
             }
-            catch(JSONException e){
-                    e.printStackTrace();
-                }
-
+            catch (JSONException e) {
+                e.printStackTrace();
+            }
+              SimpleAdapter s = new SimpleAdapter(content, myContext.getApplicationContext());
+                    listview.setAdapter(s);
+            pDialog.dismiss();
         }
     }
 
