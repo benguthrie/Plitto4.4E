@@ -105,8 +105,8 @@ public class MainActivity extends FragmentActivity {
     private List<String> friend_list;
 
     private MainFragment mainFragment;
-
-    Fragment fbFragment;
+    FragmentManager fm;
+    FragmentTransaction ft;
 
     private Session.StatusCallback callback = new Session.StatusCallback() {
         @Override
@@ -129,6 +129,8 @@ public class MainActivity extends FragmentActivity {
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
+        fm = getSupportFragmentManager();
+        ft = fm.beginTransaction();
         mDrawerToggle = new ActionBarDrawerToggle(
                 this,                  /* host Activity */
                 mDrawerLayout,         /* DrawerLayout object */
@@ -169,10 +171,9 @@ public class MainActivity extends FragmentActivity {
             if (savedInstanceState != null) {
                 userSkippedLogin = savedInstanceState.getBoolean(USER_SKIPPED_LOGIN_KEY);
             }
+
             uiHelper = new UiLifecycleHelper(this, callback);
             uiHelper.onCreate(savedInstanceState);
-
-            FragmentManager fm = getSupportFragmentManager();
             MainFragment mf = new MainFragment();
             fragments[SPLASH] = mf;
             fragments[SELECTION] = PlittoFragment.newInstance(0);
@@ -180,8 +181,6 @@ public class MainActivity extends FragmentActivity {
 
         else
         {
-            Log.e("Ronak","In else");
-            FragmentManager fm = getSupportFragmentManager();
             FragmentTransaction transaction = fm.beginTransaction();
             transaction.replace(R.id.content_frame, new NoInternetFragment()).commit();
             getActionBar().hide();
@@ -190,19 +189,29 @@ public class MainActivity extends FragmentActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        Log.e("COUNTTT",fm.getBackStackEntryCount()+"");
+
+        if(fm.getBackStackEntryCount() != 0) {
+            fm.popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 
     private void showFragment(int fragmentIndex, boolean addToBackStack) {
-        FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         if(fragmentIndex == SPLASH)
         {
-            transaction.replace(R.id.content_frame,fragments[SPLASH]);
+            transaction.replace(R.id.content_frame,fragments[SPLASH],"splash_fragment");
             getActionBar().hide();
             mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         }
         else if(fragmentIndex == SELECTION)
         {
-            transaction.replace(R.id.content_frame,fragments[SELECTION]);
+            transaction.replace(R.id.content_frame,fragments[SELECTION],"selection_fragment");
             getActionBar().show();
             mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         }
@@ -255,8 +264,11 @@ public class MainActivity extends FragmentActivity {
             case R.id.action_refresh:
                 if(isConnectedToInternet()) {
                     Fragment fragment2 = PlittoFragment.newInstance(0);
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment2).commit();
+                    FragmentManager fragmentManager = fm;
+                    FragmentTransaction transaction = fm.beginTransaction();
+                    transaction.replace(R.id.content_frame, fragment2,"no_internet_fragment");
+                    transaction.addToBackStack(null);
+                    transaction.commit();
                 }
 
             default:
@@ -272,9 +284,8 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void selectItem(int position) {
-
         Log.d("Ronak", "position === " + position);
-
+        FragmentTransaction transaction = fm.beginTransaction();
         if(mDrawerList!=null && mDrawerLayout!=null) {
 
 
@@ -291,8 +302,10 @@ public class MainActivity extends FragmentActivity {
                 } else {
 
                     Fragment fragment2 = PlittoFragment.newInstance(0);
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.content_frame, fragment2).commit();
+                    FragmentManager fragmentManager = fm;
+                    transaction.replace(R.id.content_frame, fragment2,"selection_fragment");
+                    transaction.addToBackStack(null);
+                    transaction.commit();
                     mDrawerList.setItemChecked(position, true);
                     setTitle(mNavTitles[position]);
                     mDrawerLayout.closeDrawer(mDrawerList);
@@ -312,8 +325,10 @@ public class MainActivity extends FragmentActivity {
                     args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
                     fragment.setArguments(args);
 
-                    FragmentManager fragmentManager2 = getSupportFragmentManager();
-                    fragmentManager2.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                    FragmentManager fragmentManager2 = fm;
+                    transaction.replace(R.id.content_frame, fragment,"planet_fragment");
+                    transaction.addToBackStack(null);
+                    transaction.commit();
 
                     // update selected item and title, then close the drawer
                     mDrawerList.setItemChecked(position, true);
@@ -408,7 +423,10 @@ public class MainActivity extends FragmentActivity {
         }
         else
         {
-            getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,new NoInternetFragment()).commit();
+            FragmentTransaction transaction = fm.beginTransaction();
+            transaction.replace(R.id.content_frame,new NoInternetFragment(),"no_internet_fragment");
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
     }
 
@@ -649,11 +667,12 @@ public class MainActivity extends FragmentActivity {
 
                 }
                 pDialog.dismiss();
-
-
                 FriendFragment ff = new FriendFragment(friend_list);
                 FragmentManager fm = getSupportFragmentManager();
-                fm.beginTransaction().replace(R.id.content_frame, ff).commit();
+                FragmentTransaction transaction = fm.beginTransaction();
+                transaction.replace(R.id.content_frame, ff,"friend_fragment");
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
 
         }

@@ -73,25 +73,23 @@ public class PlittoFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String myId = (String)view.getTag();
                 android.support.v4.app.FragmentManager fm = myContext.getSupportFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
                 if(Integer.parseInt(myId) == 0)
                 {
                     String name = content.get(i).getName();
                     UserFragment fragment = UserFragment.newInstance(name);
-                    FragmentTransaction transaction = fm.beginTransaction();
                     transaction.replace(R.id.content_frame, fragment);
-                    transaction.commit();
+
                 }
 
                 else if(Integer.parseInt(myId) == 1)
                 {
                     String name = content.get(i).getName();
                     ListFragment fragment = ListFragment.newInstance(name);
-                    FragmentTransaction transaction = fm.beginTransaction();
                     transaction.replace(R.id.content_frame, fragment);
-                    transaction.commit();
-
-
                 }
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
 
