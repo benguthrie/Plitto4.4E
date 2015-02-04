@@ -2,46 +2,46 @@
 <pre-dex-items>
 
     <item
-        dex="/home/batman/projects/android/Plitto4.4E/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.2-5a0f7134009547ec9289f47d5af119eb26ebcbde.jar"
-        jar="/home/batman/projects/android/Plitto4.4E/app/build/intermediates/exploded-aar/Plitto4.4E/facebook/unspecified/libs/bolts-android-1.1.2.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7"/>
-    <item
-        dex="/home/batman/projects/android/Plitto4.4E/app/build/intermediates/pre-dexed/debug/classes-f3f0d8e412948ad5dcdc4c280c35fea7e81268c6.jar"
-        jar="/home/batman/projects/android/Plitto4.4E/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
-    <item
-        dex="/home/batman/projects/android/Plitto4.4E/app/build/intermediates/pre-dexed/debug/okio-1.0.0-f2b4c7933789591f50bbc6b4fc653e49e96c8847.jar"
-        jar="/home/batman/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.0.0/2534c458682c73f5b9871131ab3098d3f987ca3/okio-1.0.0.jar"
+        dex="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\intermediates\pre-dexed\debug\okio-1.0.0-df48fca5961f327ed9d7846c293024e861a332ec.jar"
+        jar="C:\Users\Ben\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.0.0\2534c458682c73f5b9871131ab3098d3f987ca3\okio-1.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="02534c458682c73f5b9871131ab3098d3f987ca3"/>
     <item
-        dex="/home/batman/projects/android/Plitto4.4E/app/build/intermediates/pre-dexed/debug/okhttp-2.0.0-5976d6a06a8e8655fdbe10d43af6b829dea7e8c0.jar"
-        jar="/home/batman/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.0.0/4c8d1536dba3812cc1592090dc20c47a4ed3c35e/okhttp-2.0.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="4c8d1536dba3812cc1592090dc20c47a4ed3c35e"/>
-    <item
-        dex="/home/batman/projects/android/Plitto4.4E/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-60d92f2162af3fe3dc1ac8263d87de1cfce7ccd5.jar"
-        jar="/home/batman/projects/android/Plitto4.4E/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
-    <item
-        dex="/home/batman/projects/android/Plitto4.4E/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-820090ec777e85e5f91abc11b0ce2cdd64f29191.jar"
-        jar="/usr/share/android-studio/data/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
+        dex="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-b8c49b8c5bb1be9da6eb6fe45b9e66ac2b80d236.jar"
+        jar="C:\Users\Ben\AppData\Local\Android\android-studio\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
     <item
-        dex="/home/batman/projects/android/Plitto4.4E/app/build/intermediates/pre-dexed/debug/classes-14409945179bd742d5b14e1979f2d816dfa78518.jar"
-        jar="/home/batman/projects/android/Plitto4.4E/app/build/intermediates/exploded-aar/Plitto4.4E/facebook/unspecified/classes.jar"
+        dex="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\intermediates\pre-dexed\debug\classes-8208d032de9b03ec6b5bbeed10861db253c5f1f6.jar"
+        jar="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\intermediates\exploded-aar\Plitto4.4E\facebook\unspecified\classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="294316b3cd360a54003a65ff8b02914b7731ff5c"/>
+        sha1="2fee473511da684b247aa4f51f4fb6f40123dbf6"/>
+    <item
+        dex="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-e456576df34bd3f243f3566582dda5c0e8e88160.jar"
+        jar="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+    <item
+        dex="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\intermediates\pre-dexed\debug\bolts-android-1.1.2-340ecec916487f432263f182c2b107c8f020fedf.jar"
+        jar="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\intermediates\exploded-aar\Plitto4.4E\facebook\unspecified\libs\bolts-android-1.1.2.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="91c20388c9a45f62b5ed8fe0502bb76ff6251fc7"/>
+    <item
+        dex="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\intermediates\pre-dexed\debug\classes-15a5c63e174741846cde471967ed9aaef4e2d554.jar"
+        jar="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+    <item
+        dex="C:\Users\Ben\AndroidStudioProjects\Plitto4.4E\app\build\intermediates\pre-dexed\debug\okhttp-2.0.0-9f1f98f7248dc41b2a213b373968bfc76c03001d.jar"
+        jar="C:\Users\Ben\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.0.0\4c8d1536dba3812cc1592090dc20c47a4ed3c35e\okhttp-2.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="4c8d1536dba3812cc1592090dc20c47a4ed3c35e"/>
 
 </pre-dex-items>

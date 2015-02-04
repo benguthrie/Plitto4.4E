@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#303040">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="No Internet available\nPlease check your connection"
+            android:textColor="@color/com_facebook_loginview_text_color"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:lines="5"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:id="@+id/ok"
+            android:text="Ok"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
+<!-- From: file:/C:/Users/Ben/AndroidStudioProjects/Plitto4.4E/app/src/main/res/layout/no_internet.xml -->
