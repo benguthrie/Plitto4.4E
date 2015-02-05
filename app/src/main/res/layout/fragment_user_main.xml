@@ -16,61 +16,10 @@
         android:padding="10dp"
         style="@style/UserRow" />
 
-    <TabHost
+    <android.support.v4.view.ViewPager
+        android:id="@+id/myViewPager"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/tabHost"
-        style="@style/TabStyle">
+        android:layout_height="match_parent" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical">
-
-            <TabWidget
-                android:id="@android:id/tabs"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                style="@style/TabStyleButtons"></TabWidget>
-
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-                <LinearLayout
-                    android:id="@+id/Shared"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/imageView"
-                        android:src="@drawable/check_active" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/Ditto"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"></LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/Feed"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"></LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/Us"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"></LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/Lists"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"></LinearLayout>
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
 
 </LinearLayout>

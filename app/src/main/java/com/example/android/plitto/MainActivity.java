@@ -345,8 +345,6 @@ public class MainActivity extends FragmentActivity {
         getActionBar().setTitle(mTitle);
     }
 
-
-
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -468,8 +466,9 @@ public class MainActivity extends FragmentActivity {
         outState.putBoolean(USER_SKIPPED_LOGIN_KEY, userSkippedLogin);
     }
 
+    ProgressDialog pd;
 
-        private void onSessionStateChange(Session session, SessionState state, Exception exception) {
+    private void onSessionStateChange(Session session, SessionState state, Exception exception) {
         if (isResumed) {
             FragmentManager manager = getSupportFragmentManager();
             int backStackSize = manager.getBackStackEntryCount();
@@ -488,8 +487,12 @@ public class MainActivity extends FragmentActivity {
     }
 
     private Request createRequest(Session session) {
-        Request request = Request.newGraphPathRequest(session, "me/friends", null);
 
+        pd = new ProgressDialog(this);
+        pd.setMessage("Loading your friends data from facebook...");
+        pd.show();
+
+        Request request = Request.newGraphPathRequest(session, "me/friends", null);
         Set<String> fields = new HashSet<String>();
         String[] requiredFields = new String[] { "id", "name", "picture","installed","first_name","last_name" };
         fields.addAll(Arrays.asList(requiredFields));
@@ -523,17 +526,16 @@ public class MainActivity extends FragmentActivity {
                         friend = friends.get(i);
                         friend_id.add(friend.getId());
                     }
-
                     new Friend_Data().execute(friend_id);
 
                 }
             }
         });
         friendsRequest.executeAsync();
-
     }
 
     private List<GraphUser> getResults(Response response) {
+        pd.dismiss();
         GraphMultiResult multiResult = response
                 .getGraphObjectAs(GraphMultiResult.class);
         if(multiResult!=null) {
@@ -543,7 +545,6 @@ public class MainActivity extends FragmentActivity {
         else
             return null;
     }
-
 
     private String POST(List<String> id){
         InputStream inputStream = null;
@@ -619,7 +620,6 @@ public class MainActivity extends FragmentActivity {
                 inputStream = httpResponse.getEntity().getContent();
                 if(inputStream != null) {
                     result = convertInputStreamToString(inputStream);
-                    Log.e("RESULT ==", result);
                 }
                 else
                     result = "Did not work!";
@@ -630,9 +630,9 @@ public class MainActivity extends FragmentActivity {
             return result;
         }
 
-
         protected void onPostExecute(final String result) {
             super.onPostExecute(result);
+            pDialog.dismiss();
             if(result!=null) {
                 JSONObject obj = null;
                 List<FriendModel> friend_list = new ArrayList<FriendModel>();
@@ -666,7 +666,6 @@ public class MainActivity extends FragmentActivity {
                     }
 
                 }
-                pDialog.dismiss();
                 FriendFragment ff = new FriendFragment(friend_list);
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction transaction = fm.beginTransaction();
